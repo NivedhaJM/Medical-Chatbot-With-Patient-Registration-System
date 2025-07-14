@@ -1,0 +1,161 @@
+	{
+    "intents": [
+	{"tag": "greeting",
+	"patterns": ["hi","Hi","Hello","hello", "hey", "Hey", "good day","greetings","what's up?","how is it going", "What can you do?", "Who are you?", "you do?"],
+	"responses": ["Hi! I'm Your Medbot. What Can I do For You?", "Good to see you, How can I help you?", "Hello, I'm Your Medbot. How can I help you today?", "Hey! Do you need help?"],
+	"context": [""]
+    },
+	{"tag": "goodbye",
+	"patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time","See You","see you", "Quit", "Exit", "cya","see you later", "Have a good day", "see ya", "cao"],
+	"responses": ["See you!", "Have a nice day", "Bye! Come back again soon.", "Good Bye", "Bye!"],
+	"context": [""]
+    },
+	{"tag": "thanks",
+    "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me","Helpful"],
+	"responses": ["Happy to help!", "Welcome", "My pleasure"],
+	"context": [""]
+    },
+	{"tag":"age",
+	"patterns": ["how old","how old are you?","what is your age","how old are you","age?"],
+	"responses":["I get reborn after every compilation","lol!","my owners are averagely 20 years!"]
+	},	
+	{"tag":"name",
+	"patterns": ["what is your name","what should i call you","what's your name?","who are you?","can you tell me your name"],
+	"responses":["You can call me Medbot!","I'm Medbot!","I'm Medbot, your medical assistant"]
+	},
+
+	{"tag":"low temp",
+	"patterns":["97","97.1","97.2","97.3","97.4","97.5","97.6","97.7","97.8","97.9","98","98.1","98.2","98.3","98.4","98.5","98.6","98.7","98.8","98.9","99"],
+	"responses":["Your Body Temperature is Normal. So You Don't Want To Take Any Medications Please Take Rest"],
+	"context":[""]
+	},
+	{"tag":"mild temp",
+	"patterns":["99.1","99.2","99.3","99.4","99.5","99.6","99.7","99.8","99.9","100","100.1","100.2","100.3","100.4"],
+	"responses":["Rest as much as possible to support your body’s immune response. Drink plenty of fluids such as water, herbal teas, and clear broths. Fever can lead to dehydration, so it’s important to replenish lost fluids."],
+	"context":[""]
+	},
+	{"tag":"high temp",
+	"patterns":["100.5","100.6","100.7","100.8","100.9","101","101.1","101.2","101.3","101.4","101.5","101.6","101.7","101.8","101.9","102","102.1","102.2","102.3","102.4","102.5","102.6","102.7","102.8","102.9","103"],
+	"responses":["Get plenty of rest to allow your body to fight off the infection. Over-the-counter medications like acetaminophen (Tylenol) or ibuprofen (Advil) can help reduce fever and alleviate discomfort. "],
+	"context":[""]
+	},
+
+	{"tag":"common cold symptoms",
+	"patterns": ["Cold","Runny or stuffy nose","Running nose","Sore throat","Cough","Congestion","Slight body aches or a mild headache","Sneezing","Low-grade fever","Generally feeling unwell (malaise)"],
+	"responses":["It seems that you are suffering from common cold"]
+	},
+	{"tag":"fever",
+	"patterns":["fever","Fever","high fever","High Fever"],
+	"responses":["Please Enter Your Temperature!"],
+	"context":[""]
+	},
+	{"tag":"fever symptoms",
+	"patterns":["Sweating","Chills and shivering","Headache","Muscle aches","Loss of appetite","Irritability","Dehydration","General weakness"],
+	"responses":["It seems that you are suffering from fever. Do enter your temperature."]
+	},
+	{"tag":"common cold prevention",
+	"patterns":["What medicines can I buy to help me with my common cold?","tell me some prevention method from common cold","What should I eat or drink if i am suffering from common cold?","How can I keep from getting a cold or the flu?", "Medicine for cold", "Medicine for common cold"],
+	"responses":["medicines you can consume : Dextromethorphan,Decongestant,Diphenhydramine,Crocin Cold & Flu Max, preventions that you must follow :Wash your hands,Avoid touching your face,Clean frequently used surfaces,Use hand sanitizers,SUGGESTED FOODS ARE:Garlic,Vitamin C–containing fruits,Leafy greens,Broccoli,Oatmeal,Spices,Chicken Soup"]
+	},
+	{"tag":"fever prevention",
+	"patterns":["What medicines can I buy to help me with my fever?","tell me some prevention method from fever","What should I eat or drink if i am suffering from fever?","How can I keep from getting a fever?", "Medicine for fever", "medicine for fever"],
+	"responses":["medicines you can consume : acetaminophen ,ibuprofen,aspirin,Crocin Cold & Flu Max, prevention that you must follow :Wash your hands,Cover your mouth when you cough and your nose when you sneeze,Clean frequently used surfaces,Avoid sharing cups, glasses, and eating utensils with other people.,SUGGESTED FOODS ARE:Garlic,Vitamin C–containing fruits,Leafy greens,Broccoli,Oatmeal,Spices,Chicken Soup"]
+	},
+
+	{"tag":"Depression symptoms",
+	"patterns":["Hopeless outlook",	"Lost interest","Failure","Increased fatigue","sleep problem","Anxiety","change in weight","Looking at death"],
+	"responses":["It seem that you are suffering from depression"]
+    },
+
+
+	{"tag":"Stomach",
+	"patterns":["stomach pain","Stomach Pain","Stomach","stomach","stomach ache","Stomach Ache"],
+	"responses":["Specify The Pain Level(High,Moderate,Low)"],
+	"context":[""]
+	},
+	{"tag":"high pain",
+	"patterns":["high","High","High Pain","high pain"],
+	"responses":["Please Take Loperamide Tablet And Visity The Doctor Immediately"],
+	"context":[""]
+	},
+	{"tag":"moderate pain",
+	"patterns":["moderate","Moderate","moderate pain","Moderate Pain"],
+	"responses":["If You Would Have Taken Heavy Meal or Dinner Please Take Gelusil And Absore For One Day"],
+	"context":[""]
+	},
+	{"tag":"low pain",
+	"patterns":["low","Low","Low Pain","low pain"],
+	"responses":["Skip The Next Meal And Drink Hot Water"],
+	"context":[""]
+	},
+
+	{"tag":"Sto",
+	"patterns":["diabetes disease and stomach pain","diabetes disease and Stomach Pain","diabetes disease and Stomach","diabetes disease and stomach ache","diabetes disease and Stomach Ache", "increased hunger",
+             "increased thirst","weight loss","frequent urination","blurry vision","extreme fatigue"],
+	"responses":["Diabetes can increase the risk of gastroparesis (delayed stomach emptying), which can lead to bloating, stomach pain, and indigestion. If the pain is persistent, sharp, or severe, it’s important to contact your doctor to rule out serious issues"],
+	"context":[""]
+	},
+	{"tag":"hyp",
+	"patterns":["hypertension disease and stomach pain","hypertension disease and Stomach Pain","hypertension disease and Stomach","hypertension disease and stomach ache","hypertension disease and Stomach Ache"],
+	"responses":["Diuretics (often used for hypertension) can lead to low potassium, causing stomach pain or cramps. If mild, drink water and rest. Ensure you’ve taken the medication as prescribed (e.g., with food, if recommended). If the pain persists or worsens, contact your healthcare provider for advice."],
+	"context":[""]
+	},
+	{"tag":"heart",
+	"patterns":["heart attack disease and stomach pain","heart attack disease and Stomach Pain","heart attack disease and Stomach","heart attack disease and stomach ache","heart attack disease and Stomach Ache"],
+	"responses":["Stomach pain in heart patients can be a sign of reduced blood flow or other cardiovascular issues. Do not take over-the-counter pain relief without consulting a doctor, as it might worsen heart conditions"],
+	"context":[""]
+	},	
+	{"tag":"headache",
+	"patterns":["headahce","HeadAche","head ache","Head Ache","high headache","High HeadAche","High Head Ache","high head ache","head pain","Head Pain"],
+	"responses":[" Please Take Tablet Aspirin And Take Rest For A Few Hours ,If Still Headache Remains Please Visit The Nearby Doctor Immediately"],
+	"context":[""]
+	},
+	{"tag":"hed",
+	"patterns":["diabetes disease and headahce","diabetes disease and HeadAche","diabetes disease and head ache","diabetes disease and head pain"],
+	"responses":["Already you have diseases, if High or low blood sugar can cause headaches. It's important to monitor your levels to see if they are within a normal range. Diabetes can sometimes lead to stress and fatigue, which may cause headaches. Rest and relaxation might help. If headaches are frequent or severe, consult your healthcare provider to rule out any complications like hypertension or diabetic neuropathy."],
+	"context":[""]
+	},
+	{"tag":"hat",
+	"patterns":["hypertension disease and headahce","hypertension disease and HeadAche","hypertension disease and head ache","hypertension disease and head pain"],
+	"responses":["Dehydration can also contribute to headaches, so drink plenty of water. Ensure you're taking your hypertension medication as prescribed. If you're unsure or have missed doses, contact your doctor for advice. Elevated blood pressure can cause headaches, especially if it's very high. Monitor your blood pressure to ensure it's within a normal range."],
+	"context":[""]
+	},
+	{"tag":"ache",
+	"patterns":["heart attack disease and headahce","heart attack disease and HeadAche","heart attack disease and head ache","heart attack disease and head pain"],
+	"responses":["If you have a history of heart attack and experience a headache, here are some steps you might consider taking: Anxiety can exacerbate headaches, so try to remain calm and assess. Drink water, as dehydration can sometimes trigger headaches.If you have been prescribed medication for headaches or pain relief, follow your doctor’s instructions. Avoid over-the-counter medications unless advised by your healthcare provider."],
+	"context":[""]
+	},	
+	{"tag":"should",
+	"patterns":["shoulder pain","Shoulder Pain"],
+	"responses":["If you have should pain, Avoid activities that exacerbate the pain. Give your shoulder time to heal. Apply an ice pack wrapped in a cloth to the affected area for 15-20 minutes several times a day to reduce inflammation and numb the pain. After the first 48 hours, you can switch to heat therapy with a heating pad or warm towel to help relax and loosen tissues and stimulate blood flow.  If the pain persists, worsens, or is accompanied by other symptoms (like swelling, weakness, or numbness), consult a healthcare professional for a proper diagnosis and treatment plan. "],
+	"context":[""]
+	},
+	{"tag":"shd",
+	"patterns":["heart attack disease and should pain"," heart attack disease and Should Pain"],
+	"responses":["You already have heart attack, so Adhere to the treatment plan prescribed by your healthcare provider, including medications, lifestyle changes, and follow-up appointments. Follow a heart-healthy diet rich in fruits, vegetables, whole grains, lean proteins, and healthy fats."],
+	"context":[""]
+	},
+	{"tag":"dizziness",
+	"patterns":["dizziness"," giddiness", "Dizziness","Giddiness"],
+	"responses":["Low blood sugar can lead to dizziness. Eating a small snack or meal might help. Anxiety and hyperventilation can contribute to dizziness. Practice deep breathing to help calm your body. If your giddiness is severe, persistent, or accompanied by other symptoms such as fainting, confusion, headache, or vision changes, seek medical attention immediately."],
+	"context":[""]
+	},
+	{"tag":"diz",
+	"patterns":["diabetes disease and dizziness","diabetes disease and giddiness", "diabetes disease and  Dizziness","diabetes disease and  Giddiness"],
+	"responses":["Not drinking enough fluids can cause dizziness. Diabetes medications, especially insulin and some oral medications, can lower blood sugar levels too much, leading to dizziness. If you have a glucose meter, check your blood sugar level. If it’s low (usually below 70 mg/dL), consume fast-acting carbohydrates, such as fruit juice, glucose tablets, or candy."],
+	"context":[""]
+	},
+
+	{"tag":"Consultation",
+	"patterns": ["who should i contact for consultation?","is there any doctor available?","can you give me some suggestions for doctor consultations?","can you set up a meeting with a doctor for consultation?","is there any doctor available for consultation"],
+	"responses":["You can contact various doctors here for any kind of consultation: 1. https://www.1mg.com/online-doctor-consultation, 2. https://www.tatahealth.com/online-doctor-consultation/general-physician, 3. https://www.doconline.com/, or you can pay a visit to your local area doctor or family doctor."]
+	},
+
+
+	{"tag":"okay",
+	"patterns":["okay","Okay","OK","Ok","ok","OKK","OKk", "Okk", "okk"],
+	"responses":["Fine"],
+	"context":[""]
+	}	
+	]	
+}
