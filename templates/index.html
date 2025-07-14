@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+   
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css')}}" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+              @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+
+  
+  font-family: "Poppins", sans-serif;
+}
+
+    body{
+      
+         background-image: url("static/chatbot.jpg"); 
+        background-position: center;
+
+        background-size: cover;
+        height: 100vh;
+    }
+
+    /* Your existing styles... */
+
+    .chatbox {
+
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    margin: 0 auto; 
+    margin-bottom: 20px;
+    background-color: rgb(210, 243, 179);
+}
+
+.botText {
+    margin: 10px 0;
+    margin-bottom: 20px;
+    
+}
+
+#text {
+    width: 300px; /* Set the desired width */
+    margin: 0 auto; /* Center the input horizontally */
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.btn {
+    width: 100px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto; /* Center the button */
+    margin-bottom: 20px;
+    font-weight: bold;
+   
+   
+}
+
+.btn-warning {
+    background-color: #fed350; /* Button color */
+    color: black;
+}
+
+.btn-warning:hover {
+    background-color: #ff9800; /* Button hover color */
+}
+.btn1{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+
+.btn1:hover {
+    background-color: #ff9800; /* Button hover color */
+}
+#audio {
+  display: none;
+}
+.userText {
+            text-align: right;
+            margin-right: 10px;
+            color: blue;
+            font-weight: bold;
+        
+            
+            
+ }
+
+.botText {
+            text-align: left;
+            margin-left: 10px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        
+           
+        }
+.container{
+    
+    padding: 15px;
+    border-radius: 5px;
+    
+   
+}
+.voice{
+    text-decoration: none;
+    color: white;
+    
+   
+}
+.voc{
+    
+    background-color: #3400cf;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 5px;
+    margin-left: 610px;
+    
+}
+.voc:hover{
+    background-color: #7760bb;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.speech{
+    text-align: right;
+            margin-right: 10px;
+            color: blue;
+            font-weight: bold;
+}
+.result {
+            text-align: left;
+            margin-left: 10px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        
+           
+        }
+
+
+        .mutal { 
+            text-align: center;
+            font-size: 36px; 
+            font-weight: bold; 
+            color: black; 
+            padding-bottom: 10px; 
+        } 
+        .disc{
+          
+        }
+        .disc h3 { 
+            
+            font-family: serif; 
+            color: red; 
+            text-align: center; 
+            animation: animate 5.1s linear infinite; 
+        } 
+  
+        @keyframes animate { 
+            0% { 
+                opacity: 0; 
+            } 
+  
+            50% { 
+                opacity: 0.9; 
+            } 
+  
+            100% { 
+                opacity: 0; 
+            } 
+        } 
+</style>
+</head>
+<body>
+            <div class="mutal"> 
+                Mutal Fund Chatbot
+            </div> 
+    
+    <div class="disc">
+        <h3>Disclaimer:Participation by the Bank's customers shall be purely on a voluntary basis.Mutual Fund investments are subject to market risk. </h3>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form id="chatForm">
+                <div class="form-wrapper">
+                    <div id="chatbox" class="chatbox"> <!-- Apply chatbox styles -->
+                        <div class="col-md-8 ml-auto mr-auto">
+                            <p class="botText"><span>Hello I'm Your  Mutal Fund ChatBot...</span></p>
+                            <div class="speech">
+                                <p>{{speech}}</p>
+                                </div>
+                                <div class="result">
+                                        <p>{{result}}</p>
+                                </div>
+                        </div>
+                    </div>
+                    {% if audio_file %}
+                    <audio id="response-audio" controls autoplay style="display: none;">
+                   <source src="{{ url_for('static', filename=audio_file) }}" type="audio/mp3"> Your browser does not support the audio element.
+                </audio>   
+                    {% endif %}
+                    
+                </div>
+                    </div>
+                    <div id="userInput" class="row">
+                        <div class="col-md-10">
+                            <div>
+                                <b><br><input id="text" type="text" name="msg" placeholder="start your Chat here">
+                                             
+                                    <button type="button" id="send" class="btn btn-warning" onclick="sendMessage()">
+                                        Submit
+                                    </button>
+                                </div>
+                               
+                            </div>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> 
+
+<script>
+   $(document).ready(function () {
+        // Function to send message
+        function sendMessage() {
+            var rawText = $("#text").val();
+            var userHtml = '<p class="userText">You: <span>' + rawText + "</span></p>";
+            $("#text").val("");
+            $("#chatbox").append(userHtml);
+            document.getElementById("userInput").scrollIntoView({
+                block: "start",
+                behavior: "smooth",
+            });
+            $.ajax({
+                data: {
+                    msg: rawText,
+                },
+                type: "POST",
+                url: "/get",
+            }).done(function (data) {
+                var botHtml = '<p class="botText">Me: <span>' + data + "</span></p>";
+                $("#chatbox").append($.parseHTML(botHtml));
+                document.getElementById("userInput").scrollIntoView({
+                    block: "start",
+                    behavior: "smooth",
+                });
+            });
+        }
+    
+        // Bind click event to the button
+        $("#send").on("click", function () {
+            sendMessage(); // Call the sendMessage function when button clicked
+        });
+    
+        // Bind keypress event to the input field
+        $("#text").keypress(function(event) {
+            // Check if the Enter key is pressed
+            if (event.which == 13) {
+                sendMessage(); // Call the sendMessage function when Enter is pressed
+                event.preventDefault(); // Prevent default form submission behavior
+            }
+        });
+    });
+</script>
+<script>
+
+
+
+    $(document).ready(function () {
+             $("#send").on("click", function () {
+                 var message = $("#text").val();
+                 if (message.trim() !== '') {
+                     $.ajax({
+                         data: {
+                             msg: message,
+                         },
+                         type: "POST",
+                         url: "/get",
+                     }).done(function (data) {
+                         var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+                         $("#chatbox").append(botHtml);
+                         document.getElementById("userInput").scrollIntoView({
+                             block: "start",
+                             behavior: "smooth",
+                         });
+                     }).fail(function (xhr, status, error) {
+                         // Handle error
+                         console.error(error);
+                     });
+                 } 
+             });
+         });
+         window.onload = function() {
+   document.getElementById("audio").play();
+  }
+  
+  document.getElementById('speaktam').addEventListener('click', function(event) {
+             event.preventDefault(); // Prevent the default action of the link
+             
+             fetch('/speaktam', { method: 'POST' })
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error('Network response was not ok');
+                 }
+                 return response.json(); // assuming the server returns JSON
+             })
+             .then(data => {
+                 console.log(data); // Handle the response data as needed
+             })
+             .catch(error => {
+                 console.error('There was a problem with the fetch operation:', error);
+             });
+         });
+
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  font-family: "Poppins", sans-serif;
+}
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d5eaff;
+}
+.container {
+    display: flex;
+    width: 800px; 
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.left-section {
+    flex: 1;
+    background-color: #4883e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #fff;
+}
+.left-section img {
+    width: 150px;
+}
+.right-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+h2 {
+    margin: 0;
+    color: #333;
+}
+p {
+    margin-top: 5px;
+    color: #666;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 80%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+button {
+    width: 80%;
+    padding: 12px;
+    background-color: #366cc6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #2d5aa1;
+}
+.social-login {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.social-login img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+a {
+    color: #366cc6;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+a:hover {
+    text-decoration: underline;
+}
+.recovery {
+    text-align: right;
+    font-size: 12px;
+    margin-top: -10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <img src="static/EASY CARE WHITE.png" alt="Easy Care Logo">
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <h2>Hello!</h2>
+            <p>Good to see you here!</p>
+            <form action="/register" method="POST">
+                <input type="text" name="name" placeholder="Enter your name" required>
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="password" name="password" placeholder="Enter password" required>
+                <button type="submit">SIGN UP</button>
+            </form> 
+            <p>Already have an account? <a href="/login">LOGIN</a></p>
+            <p>Or continue with</p>
+            <div class="social-login">
+                <img src="static/google.png" alt="Google">
+                <img src="static/twitter.png" alt="Twitter">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Meta">
+            </div>
+        </div>
+    </div>
+    <script>
+        // Check if there is an error message from the backend
+        const error = "{{ error }}";
+        if (error) {
+            alert(error);  // Display an alert with the error message
+        }
+    </script>
+</body>
+</html>

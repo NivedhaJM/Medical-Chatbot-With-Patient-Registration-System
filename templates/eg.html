@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Care</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .hero {
+            background-image: url('home.jpg'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 40px;
+        }
+        .hero p {
+            font-size: 20px;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+        .btn button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .btn button:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 28px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .features div {
+            text-align: center;
+            width: 30%;
+        }
+        .features img {
+            width: 100px;
+            height: 100px;
+        }
+        .ai-chatbot {
+            background-color: #f0f0f0;
+            padding: 50px;
+            text-align: center;
+        }
+        .ai-chatbot h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .chat-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .chat-btn:hover {
+            background-color: #333;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header section -->
+    <header>
+        <h1>Welcome to EASY CARE</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <h2 style="color:white;">EASY CARE</h2>
+        </div>
+        <div class="menu">
+            <a href="#">HOME</a>
+            <a href="#">ABOUT</a>
+            <a href="#">SERVICES</a>
+            <a href="#">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div>
+            <h1>Welcome to EASY CARE</h1>
+            <p>Please register to access vital parts of our system.<br>
+               Enter the necessary details to get started.</p>
+            <div class="btn">
+                <button>Register</button>
+                <button>View Dashboard</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content section -->
+    <section class="content">
+        <h2>Effortless Patient Registration</h2>
+        <p>Registering patients' details has never been easier. Our system allows you to quickly and efficiently input all necessary details, ensuring a smooth and hassle-free experience.</p>
+        <div class="features">
+            <div>
+                <img src="form_icon.png" alt="Form Icon">
+                <p>Easy-to-use form with all essential fields</p>
+            </div>
+            <div>
+                <img src="security_icon.png" alt="Security Icon">
+                <p>Secure data handling</p>
+            </div>
+            <div>
+                <img src="quick_icon.png" alt="Quick Process Icon">
+                <p>Quick and efficient registration process</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot section -->
+    <section class="ai-chatbot">
+        <h2>AI Chatbot</h2>
+        <p>Our AI-powered chatbot is here to assist you with any inquiries and provide better solutions. It can even predict diseases based on your symptoms.</p>
+        <button class="chat-btn">Chat with us</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 EASY CARE. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

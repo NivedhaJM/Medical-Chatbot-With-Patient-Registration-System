@@ -1,0 +1,499 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Care</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{  
+  font-family: "Poppins", sans-serif;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;        
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #444;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+.hero {
+    background-image: url('static/home.jpg'); /* Add your background image here */
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 0;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Optional: dark overlay */
+    z-index: -1; /* Ensure it stays behind the content */
+}
+.hero h1, .hero p {
+    position: relative;
+    z-index: 1;
+}
+.btn {
+    margin-top: 20px;
+}
+.btn a, .btn button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    text-decoration: none;
+    display: inline-block; /* Ensure links act like buttons */
+    /* Keep the links/buttons clickable */
+}
+.btn a:hover, .btn button:hover {
+    background-color: #555;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    align-items: flex-start;
+}
+.left-content, .right-content {
+    width: 50%;
+}
+.left-content {
+    padding-right: 20px;
+}
+.left-content h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.left-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.features div {
+    display: flex;
+    align-items: center;
+}
+.features img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.right-content img {
+    width: 68%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 95px;
+}
+.ai-chatbot {
+    background-color: #f0f0f0;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+}
+.ai-chatbot h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+}
+.ai-chatbot img {
+            width: 50px;
+            height: 50px;
+      
+}
+.chat-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+.chat-btn:hover {
+    background-color: #333;
+}
+footer {
+    text-align: left;
+    padding: 20px 50px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.footer-left {
+    width: 45%;
+}
+.footer-left .contact-info {
+    margin-top: 10px;
+}
+.footer-left .contact-info p {
+    margin: 5px 0;
+}
+.footer-right {
+    width: 45%;
+}
+.footer-right iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 10px;
+}
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-left,
+    .footer-right {
+        width: 100%;
+        text-align: center;
+    }
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+.chatbot-container {
+    display: none;
+    position: absolute; /* To make it float */
+    top: 20px; /* Adjust based on how far down you want it from the top of the section */
+    right: 20px; /* Align it to the right of the section */
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 10; /* To ensure it stays above other content */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y:scroll; /* Prevent overflow of the chatbot container */
+}
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.chat-messages {
+    flex-grow: 1; /* Allow this div to take available space */
+    overflow-y: auto; /* Allow messages to scroll */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px; /* Add space at the bottom */
+}
+.input-container {
+  /* Ensure input and button are side by side */
+  align-items: center;
+  justify-content: space-between;
+    
+    padding: 10px 0;
+    background-color: white; /* Ensure it has a white background */
+}
+.botText, .userText {
+    display: inline-block;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.botText span {
+    background-color: #b3d9ff;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 100;
+}
+.userText span {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 100;
+}
+.input-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.input-container button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-container button:hover {
+    background-color: #0056b3;
+}
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;   
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.chat-icon img {
+    width: 50px;
+    height: 50px;
+}
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="static/EASY CARE WHITE.png" alt="Easy Care Logo">
+        </div>
+        <div class="menu">
+            <a href="#">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#services">SERVICES</a>
+            <a href="#footer">CONTACT</a>
+            <a href="/login">LOGOUT</a>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div>
+            <h1>Welcome to EASY  CARE</h1>
+            <p>Please register to access vital parts of our system.<br>
+               Enter the necessary details to get started.</p>
+            <div class="btn">
+                <a href="/patientregister">Register</a>                 
+            </div>
+        </div>  
+    </section>
+
+    <!-- Content section -->
+    <section id="about" class="content">
+        <div class="left-content">
+            <h2>Effortless Patient Registration</h2>
+            <p>Registering patients' details has never been easier. Our system allows you to quickly and efficiently input all necessary details, ensuring a smooth and hassle-free experience.</p>
+            <div class="features">
+                <div>
+                    <img src="static/verified-user.png" alt="Form Icon">
+                    <p>Easy-to-use form with all essential fields</p>
+                </div>
+                <div>
+                    <img src="static/verified-user.png" alt="Security Icon">
+                    <p>Secure data handling</p>
+                </div>
+                <div>
+                    <img src="static/verified-user.png" alt="Quick Process Icon">
+                    <p>Quick and efficient registration process</p>
+                </div>
+            </div>
+        </div>
+        <div class="right-content">
+            <img src="static/man.jpg" alt="Man Image">
+        </div>
+    </section>
+
+    <!-- AI Chatbot section -->
+    <section id="services" class="ai-chatbot">
+        <img src="static/technological.png" alt="AI Chatbot Image">
+        <h2>AI Chatbot</h2>
+        <p>Our AI-powered chatbot is here to assist you with any inquiries and provide better solutions. It can even predict diseases based on your symptoms.</p>
+        <h2>Need Assistance</h2>
+        <p>Click the button below to chat with us and get instant help.</p>
+        <a href="javascript:void(0);" onclick="toggleChatbot()">
+            <button class="chat-btn">Chat with us</button>
+        </a>
+    
+        <!-- Chatbot message box -->
+        <div class="chatbot-container">
+            <form id="chatForm">
+                <div class="form-wrapper">
+                    <div class="chatbox"> <!-- Apply chatbox styles -->
+                        <div id="chatbox" class="chat-messages"></div> <!-- For chat messages -->
+                        <!-- User input -->
+                        <div id="userInput" class="input-container">
+                            <input id="text" type="text" name="msg" placeholder="Start your chat here">
+                            <button type="button" id="send" class="btn btn-warning" onclick="sendMessage()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <div class="chat-icon" onclick="toggleChatbot()">
+            <img src="static\chatbot.png" alt="Chat Icon"> <!-- Replace this with your chat icon image -->
+        </div>
+     <!-- Chat Icon -->
+     
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-left">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+                <p>Email: support@easycare.com</p>
+                <p>Phone: +91 1234567890</p>
+                <p>Address: 123 Some Street Road, Chennai, India</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <h3>Feedback</h3>
+            <form action="/feedback" method="post">
+                <textarea name="feedback" rows="4" cols="50" placeholder="Your feedback..." required></textarea><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EASY CARE. All Rights Reserved.</p>
+        </div>
+    </footer>
+        
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function toggleChatbot() {
+            const chatbotContainer = document.querySelector('.chatbot-container');
+            if (chatbotContainer.style.display === "none" || chatbotContainer.style.display === "") {
+                chatbotContainer.style.display = "flex";  // Show the chatbot
+            } else {
+                chatbotContainer.style.display = "none";  // Hide the chatbot
+            }
+        }
+    </script>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script>
+           $(document).ready(function () {
+                // Function to send message
+                function sendMessage() {
+                    var rawText = $("#text").val();
+                    var userHtml = '<p class="userText">You: <span>' + rawText + "</span></p>";
+                    $("#text").val("");
+                    $("#chatbox").append(userHtml);
+                    document.getElementById("userInput").scrollIntoView({
+                        block: "start",
+                        behavior: "smooth",
+                    });
+                    $.ajax({
+                        data: {
+                            msg: rawText,
+                        },
+                        type: "POST",
+                        url: "/get",
+                    }).done(function (data) {
+                        var botHtml = '<p class="botText">Suggestion: <span>' + data + "</span></p>";
+                        $("#chatbox").append($.parseHTML(botHtml));
+                        document.getElementById("userInput").scrollIntoView({
+                            block: "start",
+                            behavior: "smooth",
+                        });
+                    });
+                }
+            
+                // Bind click event to the button
+                $("#send").on("click", function () {
+                    sendMessage(); // Call the sendMessage function when button clicked
+                });
+            
+                // Bind keypress event to the input field
+                $("#text").keypress(function(event) {
+                    // Check if the Enter key is pressed
+                    if (event.which == 13) {
+                        sendMessage(); // Call the sendMessage function when Enter is pressed
+                        event.preventDefault(); // Prevent default form submission behavior
+                    }
+                });
+            });
+        </script>
+        <script>   
+                
+            $(document).ready(function () {
+                     $("#send").on("click", function () {
+                         var message = $("#text").val();
+                         if (message.trim() !== '') {
+                             $.ajax({
+                                 data: {
+                                     msg: message,
+                                 },
+                                 type: "POST",
+                                 url: "/get",
+                             }).done(function (data) {
+                                 var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+                                 $("#chatbox").append(botHtml);
+                                 document.getElementById("userInput").scrollIntoView({
+                                     block: "start",
+                                     behavior: "smooth",
+                                 });
+                             }).fail(function (xhr, status, error) {
+                                 // Handle error
+                                 console.error(error);
+                             });
+                         } 
+                     });
+                 });
+                 window.onload = function() {
+           document.getElementById("audio").play();
+          }
+          
+          document.getElementById('speaktam').addEventListener('click', function(event) {
+                     event.preventDefault(); // Prevent the default action of the link
+                     
+                     fetch('/speaktam', { method: 'POST' })
+                     .then(response => {
+                         if (!response.ok) {
+                             throw new Error('Network response was not ok');
+                         }
+                         return response.json(); // assuming the server returns JSON
+                     })
+                     .then(data => {
+                         console.log(data); // Handle the response data as needed
+                     })
+                     .catch(error => {
+                         console.error('There was a problem with the fetch operation:', error);
+                     });
+                 });
+        
+          </script>
+</body>
+</html>
