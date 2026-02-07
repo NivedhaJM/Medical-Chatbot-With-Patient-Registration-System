@@ -1,43 +1,105 @@
-# libraries
+# ===== IMPORTS =====
 import random
 import numpy as np
 import pickle
 import json
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session
 import nltk
-from keras.models import load_model
 from nltk.stem import WordNetLemmatizer
-import speech_recognition as sr
-from gtts import gTTS
-import os
-from googletrans import Translator
+from keras.models import load_model
+from deep_translator import GoogleTranslator
 import sqlite3
-import re
+from werkzeug.security import generate_password_hash, check_password_hash
+
+# ===== INITIAL SETUP =====
+app = Flask(__name__)
+app.secret_key = "healmate_secret_key"
+
+database = 'chatbot1.db'
 
 lemmatizer = WordNetLemmatizer()
+nltk.download('punkt')
+nltk.download('wordnet')
+
 model = load_model("chatbot_model2.h5")
 intents = json.loads(open("intents.json").read())
 words = pickle.load(open("words.pkl", "rb"))
 classes = pickle.load(open("classes.pkl", "rb"))
 
-lst = []
-app = Flask(__name__)
+last_intent_tag = None
+last_response_index = -1
 
+# ===== DATABASE TABLES =====
+def createtable():
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS register(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT UNIQUE,
+            password TEXT
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS patient_details (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            first_name TEXT,
+            last_name TEXT,
+            gender TEXT,
+            age INTEGER,
+            height REAL,
+            weight REAL,
+            address TEXT,
+            city TEXT,
+            state TEXT,
+            pincode INTEGER,
+            phone TEXT,
+            email TEXT UNIQUE,
+            work_type TEXT,
+            blood_group TEXT,
+            medications TEXT,
+            medication_name TEXT,
+            medication_frequency TEXT,
+            dosage TEXT,
+            remarks TEXT
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS feedback(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT,
+            feedback TEXT
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS chat_history(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT,
+            user_message TEXT,
+            bot_response TEXT,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
+createtable()
+
+# ===== ROUTES =====
 @app.route("/")
 def signup():
-    return render_template("signup.html")
-
-@app.route("/signup1")
-def signup1():
     return render_template("signup.html")
 
 @app.route("/login")
 def login():
     return render_template("login.html")
-
-@app.route("/home")
-def home():
-    return render_template("home.html")
 
 @app.route("/patientregister")
 def patientregister():
@@ -48,115 +110,132 @@ def index():
     print(patient_details_list)
     return render_template("chatbot.html")
 
-database='chatbot1.db'
+@app.route("/home")
+def home():
+    if "email" not in session:
+        return redirect("/login")
 
-def createtable():
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
-    cursor.execute("create table if not exists register(id integer primary key autoincrement, name text, email text, password text)")
-    cursor.execute('''
-                    CREATE TABLE IF NOT EXISTS patient_details (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        first_name TEXT NOT NULL,
-                        last_name TEXT NOT NULL,
-                        gender TEXT NOT NULL,
-                        age INTEGER NOT NULL,
-                        height REAL NOT NULL,
-                        weight REAL NOT NULL,
-                        address TEXT NOT NULL,
-                        city TEXT NOT NULL,
-                        state TEXT NOT NULL,
-                        pincode INTEGER NOT NULL,
-                        phone TEXT NOT NULL,
-                        email TEXT NOT NULL,
-                        work_type TEXT,
-                        blood_group TEXT NOT NULL,
-                        medications TEXT NOT NULL,
-                        medication_name TEXT,
-                        medication_frequency TEXT,
-                        dosage TEXT,
-                        remarks TEXT
-                    )
-                    ''')
-    cursor.execute("create table if not exists feedback(id integer primary key autoincrement, name text, email text, feedback text)")
-    conn.commit()
+
+    cursor.execute(
+        "SELECT * FROM patient_details WHERE email=?",
+        (session["email"],)
+    )
+    patient_data = cursor.fetchone()
+
     conn.close()
-createtable()
 
-@app.route('/feedback' , methods=['GET','POST'])
-def feedback():
-    if request.method == 'POST':
-        name = patient_details_list[1]
-        email = patient_details_list[12]
-        feedback = request.form['feedback']
-        conn = sqlite3.connect(database)
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO feedback(name, email, feedback) values(?,?,?)",(name, email, feedback))
-        conn.commit()
-        return render_template('login.html')
-    return render_template('home.html')
+    return render_template("home.html", patient=patient_data)
 
-
-
-@app.route('/register', methods=['GET','POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         name = request.form['name']
-        email =  request.form['email']
+        email = request.form['email']
         password = request.form['password']
+
+        hashed_password = generate_password_hash(password)
+
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
-        cursor.execute("SELECT email FROM register WHERE email=?",(email,))
-        registered=cursor.fetchall()
-        if registered:
-            return render_template('signup.html', error="Your email is already registered.")
-        else:
-            cursor.execute("INSERT INTO register(name, email, password) values(?,?,?)",(name, email, password))
-            conn.commit()
-            return render_template('login.html', error="Your email Id registered.")
 
-    return render_template()
+        cursor.execute("SELECT email FROM register WHERE email=?", (email,))
+        if cursor.fetchone():
+            conn.close()
+            return render_template('signup.html',
+                                   error="Email already registered.")
 
-# Declare a global list outside the function
-patient_details_list = []
+        cursor.execute(
+            "INSERT INTO register(name,email,password) VALUES (?,?,?)",
+            (name, email, hashed_password)
+        )
+
+        conn.commit()
+        conn.close()
+
+        return redirect('/login')
+
+    return render_template('signup.html')
 
 @app.route("/logindetails", methods=['GET', 'POST'])
 def logindetails():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+
         conn = sqlite3.connect(database)
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM register WHERE email=? AND password=?", (email, password))
-        data = cursor.fetchone()
 
-        if data is None:
-            return render_template('login.html',error="Id Not registered")
-        else:
-            # Fetch patient details based on the email
-            cursor.execute("SELECT * FROM patient_details WHERE email=?", (email,))
+        cursor.execute("SELECT password FROM register WHERE email=?", (email,))
+        user = cursor.fetchone()
+
+        if user and check_password_hash(user[0], password):
+
+            session["email"] = email
+
+            # Fetch patient details (optional)
+            cursor.execute(
+                "SELECT * FROM patient_details WHERE email=?",
+                (email,)
+            )
             patient_data = cursor.fetchone()
-            
-            # Update the global patient_details_list
-            if patient_data:
-                global patient_details_list  # Declare the list as global to modify it
-                patient_details_list = list(patient_data)  # Convert tuple to list
 
-                # Print patient details to the backend
-                print("Patient Details:", patient_details_list)
+            conn.close()
+
+            if patient_data:
+                session["patient_exists"] = True
             else:
-                print("No patient details found for this user.")
-            
-            conn.commit()
-            return render_template('home.html')
+                session["patient_exists"] = False
+
+            return redirect("/home")
+
+        else:
+            conn.close()
+            return render_template('login.html',
+                                   error="Invalid Email or Password")
 
     return render_template('login.html')
 
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+
+    if "email" not in session:
+        return redirect("/login")
+
+    if request.method == 'POST':
+        feedback_text = request.form['feedback']
+        email = session["email"]
+
+        conn = sqlite3.connect(database)
+        cursor = conn.cursor()
+
+        # Fetch patient first name
+        cursor.execute(
+            "SELECT first_name FROM patient_details WHERE email=?",
+            (email,)
+        )
+        patient = cursor.fetchone()
+
+        name = patient[0] if patient else "User"
+
+        # Insert feedback
+        cursor.execute(
+            "INSERT INTO feedback(name, email, feedback) VALUES (?,?,?)",
+            (name, email, feedback_text)
+        )
+
+        conn.commit()
+        conn.close()
+
+        return redirect("/home")
+
+    return render_template('feedback.html')
+
 @app.route('/submit', methods=['POST'])
 def submit():
-    global patient_details_list  # Use the same global list
+    global patient_details_list
 
-    # Create a new list with submitted form data
     submitted_data = [
         request.form['first_name'],
         request.form['last_name'],
@@ -179,135 +258,257 @@ def submit():
         request.form.get('remarks', '')
     ]
 
-    # Print the submitted data to verify
     print("Submitted Data:", submitted_data)
 
-    # Append the submitted data to the patient_details_list
     patient_details_list.extend(submitted_data)
-
-    # Print the updated patient_details_list
     print("Updated Patient Details List:", patient_details_list)
 
-    # Connect to the database and insert data using the submitted data
     conn = sqlite3.connect(database)
     cursor = conn.cursor()
-    cursor.execute('''INSERT INTO patient_details (first_name, last_name, gender, age, height, weight, address, city, state, pincode, phone, email, work_type, blood_group, medications, medication_name, medication_frequency, dosage, remarks)
-                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', submitted_data)
+    cursor.execute('''
+        INSERT INTO patient_details (
+            first_name, last_name, gender, age, height, weight,
+            address, city, state, pincode, phone, email,
+            work_type, blood_group, medications,
+            medication_name, medication_frequency, dosage, remarks
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', submitted_data)
 
-    # Commit and close the connection
     conn.commit()
     conn.close()
 
-    # Render the index.html template
     return render_template('home.html')
 
-name_messages = ['my name', 'you know my name']
-height_messages = ['my height', 'updated height', 'height', 'hgt']
-weight_messages = ['my weight', 'updated weight', 'weight', 'wgt']
-medications = ['medications', 'medicine name', 'my medicines']
-medications_fry = ['medication frequency', 'medicine frequency', 'my medicines frequency']
-medications_dos = ['medication dosage', 'medicine dosages', 'my medicine dosages', 'medicine dose']
-
-@app.route("/get", methods=["POST"])
-def get_bot_response():
-    msg = request.form["msg"]
-    print(msg)
-    if msg in name_messages:
-        response = patient_details_list[1]
-    elif msg in height_messages:
-        response = patient_details_list[5]
-    elif msg in weight_messages:
-        response = patient_details_list[6]
-    elif msg in medications:
-        response = patient_details_list[15]
-    elif msg in medications_fry:
-        response = patient_details_list[16]
-    elif msg in medications_dos:
-        response = patient_details_list[17]
-    else:
-        response = chatbot_response(msg)
-
-    if isinstance(response, float):
-        response = str(response)
-    return response
-
-
-def chatbot_response(msg):
-    messg = msg.lower()
-    print('messg',messg)
-    lst.insert(0, messg)    
-    msg = check_symptoms_in_database(messg)
-    print('msg',msg)
-    ints = predict_class(msg, model)
-    res = getResponse(ints, intents)
-    return res
-
-import re
-
-stopwords = {'i', 'have', 'the', 'a', 'and', 'is', 'of', 'to', 'with', 'for', 'in', 'on', 'at', 'by', 'it', 'from'}
-
-def check_symptoms_in_database(symptom):
-
-    symptom_keywords = symptom.lower().split()
-    print('symptom_keywords:', symptom_keywords)
-
-    filtered_keywords = [word for word in symptom_keywords if word not in stopwords]
-    print('filtered_keywords:', filtered_keywords)
-
-    if 'symptoms' in filtered_keywords:
-        target_diseases = ['diabetes', 'hypertension', 'heart attack']
-
-        filtered_diseases = [disease for disease in patient_details_list if isinstance(disease, str) and disease.lower() in target_diseases]
-
-        print("Filtered Diseases:", filtered_diseases)
-        if filtered_diseases:
-                    value = f" {', '.join(filtered_diseases)} disease and {symptom}"
-                    print('check',value)
-                    return value
-        
-        return symptom    
-    return symptom
-
-#tokenise the input, normalize the word, lemmatize each word, preprocess the list of words
+# ===== NLP FUNCTIONS =====
 def clean_up_sentence(sentence):
-    sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
+    sentence_words = nltk.word_tokenize(sentence.lower())
+    sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
     return sentence_words
 
-
-def bow(sentence, words, show_details=True):
+def bow(sentence):
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
+
     for s in sentence_words:
         for i, w in enumerate(words):
             if w == s:
                 bag[i] = 1
-                if show_details:
-                    print("found in bag: %s" % w)
+
     return np.array(bag)
 
+def predict_class(sentence):
+    p = bow(sentence)
+    res = model.predict(np.array([p]), verbose=0)[0]
 
-def predict_class(sentence, model):
-    p = bow(sentence, words, show_details=False)
-    res = model.predict(np.array([p]))[0]
-    ERROR_THRESHOLD = 0.25
+    ERROR_THRESHOLD = 0.75
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
+
+    if not results:
+        return []
+
     results.sort(key=lambda x: x[1], reverse=True)
-    return_list = []
-    for r in results:
-        return_list.append({"intent": classes[r[0]], "probability": str(r[1])})
-    return return_list
+    return [{"intent": classes[r[0]], "probability": str(r[1])} for r in results]
 
+def getResponse(ints):
+    global last_intent_tag, last_response_index
 
-def getResponse(ints, intents_json):
-    result = "I'm sorry, I didn't understand that."
+    if not ints:
+        return "I'm not confident about that. Can you rephrase?"
+
     tag = ints[0]["intent"]
-    list_of_intents = intents_json["intents"]
-    for i in list_of_intents:
-        if i["tag"] == tag:
-            result = random.choice(i["responses"])
-            break
-    return result
+
+    for intent in intents["intents"]:
+        if intent["tag"] == tag:
+
+            responses = intent["responses"]
+
+            if tag == last_intent_tag:
+                new_index = last_response_index
+                while new_index == last_response_index and len(responses) > 1:
+                    new_index = random.randrange(len(responses))
+            else:
+                new_index = random.randrange(len(responses))
+
+            last_intent_tag = tag
+            last_response_index = new_index
+
+            return responses[new_index]
+
+    return "I'm not sure about that."
+
+def chatbot_response(msg):
+
+    global last_intent_tag, last_response_index
+
+    messg = msg.lower()
+
+    if messg in ["no", "no no", "nope", "nah", "not this", "another", "i dont want this", 
+                 "different", "any other", "other", "anything else", "something different",
+                 "something else", "else", "something", "any other", "other" ]:
+
+        if last_intent_tag:
+            for i in intents["intents"]:
+                if i["tag"] == last_intent_tag:
+                    responses = i["responses"]
+                    last_response_index = (last_response_index + 1) % len(responses)
+                    return responses[last_response_index]
+
+        return "Please ask something first."
+
+    msg_checked = check_symptoms_in_database(messg)
+    ints = predict_class(msg_checked)
+
+    if ints:
+        last_intent_tag = ints[0]["intent"]
+        last_response_index = -1
+
+    return getResponse(ints)
+
+# ===== CHAT ROUTE =====
+name_messages = ['my name', 'you know my name']
+height_messages = ['my height', 'updated height', 'height', 'hgt']
+weight_messages = ['my weight', 'updated weight', 'weight', 'wgt']
+medications = ['medications', 'medicine name', 'my medicines']
+medications_fry = ['medication frequency', 'medicine frequency',
+                   'my medicines frequency']
+medications_dos = ['medication dosage', 'medicine dosages',
+                   'my medicine dosages', 'medicine dose']
+
+@app.route("/get", methods=["POST"])
+def get_bot_response():
+    global last_intent_tag
+
+    if "email" not in session:
+        return "Please login first."
+
+    msg = request.form["msg"]
+    if not msg.strip():
+        return "Please type something."
+    
+    lang = request.form.get("lang", "en")
+    print("Selected language:", lang)
+    print("Original message:", msg)
+    
+    try:
+        if lang != "en":
+            msg_en = GoogleTranslator(source='auto', target='en').translate(msg)
+        else:
+            msg_en = msg
+    except Exception as e:
+        print("Translation error:", e)
+        msg_en = msg
+
+    if msg_en in name_messages:
+        response_en = patient_details_list[1]
+    elif msg_en in height_messages:
+        response_en = patient_details_list[5]
+    elif msg_en in weight_messages:
+        response_en = patient_details_list[6]
+    elif msg_en in medications:
+        response_en = patient_details_list[15]
+    elif msg_en in medications_fry:
+        response_en = patient_details_list[16]
+    elif msg_en in medications_dos:
+        response_en = patient_details_list[17]
+    else:
+        response_en = chatbot_response(msg_en)
+ 
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+    cursor.execute("""INSERT INTO chat_history (email,user_message,bot_response)
+        VALUES (?,?,?)
+    """, (session["email"], msg_en, response_en))
+    conn.commit()
+    conn.close()
+
+    try:
+        if lang != "en":
+            response = GoogleTranslator(source='en', target=lang).translate(response_en)
+        else:
+            response = response_en
+    except Exception as e:
+        print("Response translation error:", e)
+        response = response_en 
+
+    return response
+
+stopwords = {
+    'i', 'have', 'the', 'a', 'and', 'is', 'of', 'to', 'with', 'for',
+    'in', 'on', 'at', 'by', 'it', 'from'
+}
+
+def check_symptoms_in_database(symptom):
+    symptom_keywords = symptom.lower().split()
+    print('symptom_keywords:', symptom_keywords)
+
+    filtered_keywords = [
+        word for word in symptom_keywords if word not in stopwords
+    ]
+    print('filtered_keywords:', filtered_keywords)
+
+    if 'symptoms' in filtered_keywords:
+        target_diseases = ['diabetes', 'hypertension', 'heart attack']
+        filtered_diseases = [
+            disease for disease in patient_details_list
+            if isinstance(disease, str)
+            and disease.lower() in target_diseases
+        ]
+        print("Filtered Diseases:", filtered_diseases)
+        if filtered_diseases:
+            value = f" {', '.join(filtered_diseases)} disease and {symptom}"
+            print('check', value)
+            return value
+
+    return symptom
+
+
+@app.route("/history")
+def view_history():
+    if "email" not in session:
+        return redirect("/login")
+
+    if patient_details_list:
+        user_email = patient_details_list[12]
+    else:
+        user_email = "guest"
+        
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT user_message, bot_response, timestamp
+        FROM chat_history
+        WHERE email=?
+        ORDER BY id DESC
+    """, (session["email"],))
+
+    chats = cursor.fetchall()
+    conn.close()
+
+    return render_template("history.html", chats=chats)
+
+
+@app.route("/delete_history", methods=["POST"])
+def delete_history():
+    if "email" not in session:
+        return "error"
+
+    conn = sqlite3.connect(database)
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM chat_history WHERE email=?",
+                   (session["email"],))
+
+    conn.commit()
+    conn.close()
+
+    return "success"
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
 
 if __name__ == "__main__":
-    app.run(port=400)
+    app.run(port=4000)
