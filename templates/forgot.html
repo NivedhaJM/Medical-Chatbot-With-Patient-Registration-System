@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forgot Password | HEALMATE</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ================= ROOT ================= */
+:root{
+  --text:#eaf2ff;
+  --muted:#a8b3cf;
+  --border:rgba(255,255,255,.15);
+  --primary:#2f80ed;
+  --accent:#2ec4b6;
+}
+
+*{box-sizing:border-box;font-family:Poppins,sans-serif;}
+
+/* ================= BODY ================= */
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0c1424,#101f3d,#0b1730);
+  color:var(--text);
+}
+
+/* ================= CONTAINER ================= */
+.container{
+  width:900px;
+  max-width:95%;
+  display:flex;
+  border-radius:24px;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  backdrop-filter:blur(22px);
+  border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+/* ================= LEFT ================= */
+.left-section{
+  flex:1;
+  background:linear-gradient(135deg,#214083e6,#1b3a75,#2f5fa8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.left-section img{
+  width:300px;
+}
+
+/* ================= RIGHT ================= */
+.right-section{
+  flex:1;
+  padding:60px 50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.right-section h2{
+  font-size:2.2rem;
+  margin-bottom:6px;
+}
+
+.right-section p{
+  color:var(--muted);
+  margin-bottom:35px;
+}
+
+/* ================= INPUT ================= */
+input{
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:18px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(20,30,60,.55);
+  color:var(--text);
+  outline:none;
+}
+
+input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(46,196,182,.25);
+}
+
+/* ================= BUTTON ================= */
+button{
+  margin-top:10px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(47,128,237,.5);
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(47,128,237,.7);
+}
+
+/* ================= MESSAGE ================= */
+.message{
+  margin-bottom:15px;
+  font-weight:600;
+}
+
+.success{ color:#2ec4b6; }
+.error{ color:#ff6b6b; }
+
+.signup{
+  margin-top:20px;
+  font-size:14px;
+}
+
+.signup a{
+  color:#2ec4b6;
+  text-decoration:none;
+}
+
+.signup a:hover{
+  text-decoration:underline;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT -->
+  <div class="left-section">
+    <img src="static/LOGO.png" alt="Logo">
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right-section">
+    <h2>Reset Password 🔐</h2>
+    <p>Enter your email and create a new password.</p>
+
+    {% if message %}
+      <div class="message {{ category }}">
+        {{ message }}
+      </div>
+    {% endif %}
+
+    <form method="POST">
+
+      <input type="email" name="email" placeholder="Enter your email" required>
+
+      <input type="password" name="password" id="password"
+             placeholder="New Password" required>
+
+      <input type="password" name="confirm_password" id="confirm_password"
+             placeholder="Confirm Password" required>
+
+      <button type="submit">Reset Password</button>
+
+    </form>
+
+    <div class="signup">
+      Remembered your password?
+      <a href="{{ url_for('login') }}">Login</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function(e){
+  let p = document.getElementById("password").value;
+  let c = document.getElementById("confirm_password").value;
+  if(p !== c){
+    alert("Passwords do not match!");
+    e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>

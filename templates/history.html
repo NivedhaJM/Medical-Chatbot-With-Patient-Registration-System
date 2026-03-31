@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat History | HEALMATE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background:linear-gradient(to bottom,#0a1628, #060d1a);
+  color:#eaf2ff;
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode {
+  background: linear-gradient(to bottom, #cce4f7, #dff0fb) !important;
+  color: #0a2a5e !important;
+}
+body.light-mode nav {
+  background: linear-gradient(135deg, #5ac4ff, #d9f0ff, #5ac4ff) !important;
+}
+body.light-mode nav a { color: #0a2a5e !important; }
+
+body.light-mode h2 { color: #0a2a5e !important; }
+body.light-mode .chat-card {
+  background: #d8eef8 !important;
+  border: 1px solid rgba(0, 80, 160, 0.366) !important;
+  color: #0a2a5e !important;
+}
+body.light-mode .user { color: #0a6a5e !important; }
+body.light-mode .bot { color: #0a2a9e !important; }
+body.light-mode .timestamp { color: #3a6a9a !important; }
+body.light-mode .search-box {
+  background: #e8f4fc !important;
+  color: #0a2a5e !important;
+  border: 1px solid rgba(0,80,160,.25) !important;
+}
+body.light-mode .search-box::placeholder { color: #3a6a9a !important; }
+
+/* ===== TOGGLE BUTTON ===== */
+.theme-toggle {
+  background: none;
+  border: 2px solid rgba(255,255,255,.5);
+  border-radius: 20px;
+  padding: 4px 14px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 16px;
+  transition: all 0.3s;
+}
+.theme-toggle:hover { background: rgba(255,255,255,.2); }
+body.light-mode .theme-toggle { border-color: #0a2a5e; color: #0a2a5e; }
+body.light-mode .theme-toggle:hover { background: rgba(10,42,94,.1); }
+*, *::before, *::after { transition: background 0.3s, color 0.3s; }
+
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:12px 60px;background:#1C4D8D;backdrop-filter:blur(10px);box-shadow:0 4px 18px rgba(0,0,0,.45);font-size:larger;}
+nav a{color:#eaf2ff;text-decoration:none;margin-left:22px;font-weight:500;opacity:.9;}
+nav a:hover{color:#2ec4b6;}
+.logo{height:60px;display:flex;align-items:center;padding:10px 20px;}
+.logo img{height:100px;width:auto;}
+
+.container{
+  width:80%;
+  margin:40px auto;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.chat-card{
+  position:relative;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+.user{ color:#2ec4b6; font-weight:600; }
+.bot{ color:#2f80ed; font-weight:600; }
+
+.timestamp{
+  position:absolute;
+  top:12px;
+  right:18px;
+  font-size:11px;
+  color:#9fb3d1;
+}
+
+.back-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:10px 20px;
+  background:linear-gradient(135deg,#2f80ed,#2ec4b6);
+  color:white;
+  border-radius:25px;
+  text-decoration:none;
+}
+.back-btn:hover{ opacity:0.9; }
+
+.message{ margin-top:10px; max-width:85%; }
+
+.search-container{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.search-box{
+  flex:1;
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(20,30,60,.6);
+  color:#eaf2ff;
+  font-size:14px;
+}
+
+.delete-btn{
+  padding:8px 14px;
+  font-size:12px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:rgba(255,0,0,0.7);
+  color:white;
+}
+.delete-btn:hover{ background:red; }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><img src="/static/LOGO.png" alt="Logo"></div>
+  <div>
+    <a href="/home">HOME</a>
+    <a href="/home#services">SERVICES</a>
+    <a href="/history">CHAT HISTORY</a>
+    <a href="/home#footer">CONTACT</a>
+    <a href="/login">LOGOUT</a>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Your Chat History</h2>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search your chat history..."
+      class="search-box" onkeyup="filterChats()" />
+    <button class="delete-btn" onclick="deleteHistory()">Delete History</button>
+  </div>
+
+  {% for chat in chats %}
+  <div class="chat-card chat-item">
+    <div class="timestamp">{{ chat[2] }}</div>
+    <div class="message"><span class="user">You:</span> {{ chat[0] }}</div>
+    <div class="message"><span class="bot">ChatBot:</span> {{ chat[1] }}</div>
+  </div>
+  {% endfor %}
+
+  <a href="/home" class="back-btn">Back to Home</a>
+</div>
+
+<script>
+  // Sync theme from localStorage — matches home.html preference
+  (function() {
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light-mode");
+      document.getElementById("themeBtn").textContent = "🌙";
+    }
+  })();
+
+  function toggleTheme() {
+    var body = document.body;
+    var btn = document.getElementById("themeBtn");
+    if (body.classList.contains("light-mode")) {
+      body.classList.remove("light-mode");
+      btn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.add("light-mode");
+      btn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  }
+</script>
+
+<script>
+  document.getElementById("searchInput").addEventListener("keyup", function() {
+    let filter = this.value.toLowerCase();
+    let items = document.getElementsByClassName("chat-item");
+    for (let i = 0; i < items.length; i++) {
+      let text = items[i].innerText.toLowerCase();
+      items[i].style.display = text.includes(filter) ? "" : "none";
+    }
+  });
+</script>
+
+<script>
+  function deleteHistory() {
+    if (!confirm("Are you sure you want to delete all chat history?")) return;
+    fetch("/delete_history", { method: "POST" })
+      .then(response => response.text())
+      .then(data => { if (data === "success") location.reload(); });
+  }
+</script>
+</body>
+</html>

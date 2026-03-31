@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot | HEALMATE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .chat-container {
+            width: 60%;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        #chatbox {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            background-color: #e8f3ff;
+        }
+        .botText span {
+            background-color: #b3d4ff;
+            padding: 8px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 4px 0;
+        }
+        .userText {
+            text-align: right;
+        }
+        .userText span {
+            background-color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+        }
+        #userInput {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="chat-container">
+    <h3 class="text-center">CHATBOT NAME</h3>
+    <div id="chatbox">
+        <p class="botText"><span>Chatbot starts the conversation.</span></p>
+    </div>
+    <div id="userInput" class="row">
+        <div class="col-md-4 col-12 mb-2">
+            <select id="language" class="form-control" style="width:100%;">
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                <option value="fr">Français (French)</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ml">മലയാളം (Malayalam)</option>
+            </select>
+        </div>
+        <div class="col-md-6 col-12 mb-2">
+            <input id="textInput" class="form-control" type="text"
+                   name="msg" placeholder="How can I help you?">
+        </div>
+        <div class="col-md-2 col-12 mb-2">
+            <button id="buttonInput" class="btn btn-primary btn-block">
+                Send
+            </button>
+        </div>
+    </div>
+    <div class="mt-2 text-center text-muted" style="font-size: 13px;">
+        English &nbsp;|&nbsp; தமிழ் &nbsp;|&nbsp; हिंदी &nbsp;|&nbsp; తెలుగు &nbsp;|&nbsp; ಕನ್ನಡ &nbsp;|&nbsp; Français &nbsp;|&nbsp; اردو &nbsp;|&nbsp; മലയാളം
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function sendMessage() {
+        var msg = $("#textInput").val();
+        var lang = $("#language").val();
+        if (msg.trim() === "") {
+            return;
+        }
+        var userHtml = "<p class='userText'><span>" + msg + "</span></p>";
+        $("#chatbox").append(userHtml);
+        $("#textInput").val("");
+        $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+        $.post("/get",
+            { msg: msg, lang: lang },
+            function (data) {
+                var botHtml = "<p class='botText'><span>" + data.replace(/\n/g, "<br>") + "</span></p>";
+                $("#chatbox").append(botHtml);
+                $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+            }
+        );
+    }
+    $("#buttonInput").click(function () {
+        sendMessage();
+    });
+    $("#textInput").keypress(function (e) {
+        if (e.which === 13) {
+            sendMessage();
+        }
+    });
+</script>
+</body>
+</html>

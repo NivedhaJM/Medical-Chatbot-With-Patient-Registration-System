@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | HEALMATE</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ================= THEME ================= */
+:root{
+  --bg:#0c1424;
+  --primary:#2f80ed;
+  --accent:#2ec4b6;
+  --text:#eaf2ff;
+  --muted:#9fb3d1;
+  --glass:rgba(255,255,255,0.12);
+  --border:rgba(255,255,255,0.2);
+}
+
+*{box-sizing:border-box;font-family:Poppins,sans-serif;}
+
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0c1424,#101f3d,#0b1730);
+  color:var(--text);
+}
+
+/* ================= CONTAINER ================= */
+.container{
+  width:900px;
+  max-width:95%;
+  display:flex;
+  border-radius:24px;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+/* ================= LEFT ================= */
+.left-section{
+  flex:1;
+  background:linear-gradient(135deg,#214083e6,#1b3a75,#2f5fa8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.left-section img{
+  width:300px;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.4));
+}
+
+/* ================= RIGHT ================= */
+.right-section{
+  flex:1;
+  padding:60px 50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.right-section h2{
+  font-size:2.2rem;
+  margin-bottom:6px;
+}
+
+.right-section p{
+  color:var(--muted);
+  margin-bottom:35px;
+}
+
+/* ================= INPUT ================= */
+input{
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:18px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(20,30,60,.55);
+  color:var(--text);
+  outline:none;
+}
+
+input::placeholder{
+  color:rgba(234,242,255,.6);
+}
+
+input:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(46,196,182,.25);
+}
+
+/* ================= FORGOT PASSWORD ================= */
+
+.forgot-password {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* ================= BUTTON ================= */
+button{
+  margin-top:10px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(47,128,237,.5);
+  transition:.3s;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(47,128,237,.7);
+}
+
+/* ================= EXTRA ================= */
+.signup{
+  margin-top:20px;
+  font-size:14px;
+}
+
+.signup a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:500;
+}
+
+.signup a:hover{text-decoration:underline;}
+
+.social-login{
+  margin-top:30px;
+  display:flex;
+  gap:16px;
+}
+
+.social-login img{
+  width:38px;
+  cursor:pointer;
+  filter:drop-shadow(0 6px 12px rgba(0,0,0,.4));
+  transition:.2s;
+}
+
+.social-login img:hover{
+  transform:scale(1.08);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:750px){
+  .container{flex-direction:column;}
+  .left-section{padding:40px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="left-section">
+    <img src="static/LOGO.png" alt="Logo">
+  </div>
+
+  <div class="right-section">
+    <h2>Hello Again 👋</h2>
+    <p>Welcome back. Continue your healthcare journey.</p>
+
+    <!-- {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div style="color:green; font-weight:bold; margin-bottom:15px;">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %} -->
+
+
+    <form action="/logindetails" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <input type="password" name="password" placeholder="Enter your password" required>
+      <button type="submit">Login</button>
+    </form>
+    
+    <div class="forgot-password">
+      <a href="/forgot">Forgot Password?</a>
+    </div>
+
+
+    <div class="signup">
+      Don't have an account? <a href="/">Sign up</a>
+    </div>
+
+    <div class="social-login">
+      <a href="/login/google">
+        <img src="static/google.png" alt="Google" onclick="window.open('https://accounts.google.com')">
+      </a>
+
+      <a href="/login/facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+      </a>
+
+      <a href="/login/twitter">
+        <img src="static/twitter.png" alt="Twitter">
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+const error = "{{ error }}";
+if (error) alert(error);
+</script>
+
+</body>
+</html>

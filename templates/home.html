@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEALMATE</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+    :root {
+      --bg: #0c1424;
+      --nav: #1C4D8D;
+      --card: rgba(20, 30, 55, .65);
+      --text: #eaf2ff;
+      --muted: #9fb3d1;
+      --primary: #2f80ed;
+      --accent: #2ec4b6;
+      --border: rgba(255, 255, 255, .15);
+      --ink: #1b2a44;
+    }
+
+    /* ===== LIGHT MODE ===== */
+    body.light-mode {
+      background: linear-gradient(to bottom, #cce4f7, #dff0fb) !important;
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode nav {
+      background: linear-gradient(135deg, #5ac4ff, #d9f0ff, #5ac4ff) !important;
+    }
+
+    body.light-mode nav a {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode .hero p {
+      color: #d0eaf8 !important;
+    }
+
+    body.light-mode .ai-chatbot {
+      background: linear-gradient(135deg, #ffffff, #a1deff, #ffffff) !important;
+    }
+
+    body.light-mode .ai-chatbot h2 {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode .ai-sub {
+      color: #1a4a7a !important;
+    }
+
+    body.light-mode .ai-card {
+      background: #e8f4fc !important;
+      box-shadow: 0 8px 20px rgba(0, 80, 160, .15) !important;
+    }
+
+    body.light-mode .ai-card h4 {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode .ai-card p {
+      color: #1a3a6a !important;
+    }
+
+    body.light-mode .how-section {
+      background: linear-gradient(135deg, #ffffff, #a1deff, #ffffff) !important;
+    }
+
+    body.light-mode .how-it-works h3 {
+      color: #092554 !important;
+    }
+
+    body.light-mode .how-sub {
+      color: #13385c !important;
+    }
+
+    body.light-mode .step-card {
+      background: #e9f4fb !important;
+      box-shadow: 0 8px 20px rgba(0, 80, 160, .15) !important;
+    }
+
+    body.light-mode .step-card h4 {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode .step-card p {
+      color: #1a3a6a !important;
+    }
+
+    body.light-mode .step-card span {
+      background: #164f8d !important;
+    }
+
+    body.light-mode .chatbot-container {
+      background: linear-gradient(135deg, rgba(200, 230, 250, .9), rgba(180, 220, 245, .8)) !important;
+      border: 1px solid rgba(0, 80, 160, .2) !important;
+    }
+
+    body.light-mode .botText span {
+      background: #d0eaf8 !important;
+      color: #0a2a5e !important;
+      border: 1px solid rgba(0, 80, 160, .15) !important;
+    }
+
+    body.light-mode select {
+      background: #d8eef8 !important;
+      color: #0a2a5e !important;
+      border: 1px solid rgba(0, 80, 160, .25) !important;
+    }
+
+    body.light-mode .input-container input {
+      background: #d8eef8 !important;
+      color: #0a2a5e !important;
+      border: 1px solid rgba(0, 80, 160, .25) !important;
+    }
+
+    body.light-mode .input-container input::placeholder {
+      color: #3a6a9a !important;
+    }
+
+    body.light-mode footer {
+      background: linear-gradient(135deg, #54c1fc, #d9f0ff, #54c1fc) !important;
+    }
+
+    body.light-mode footer p {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode footer p strong {
+      color: #0a1a3e !important;
+    }
+
+    body.light-mode footer h3 {
+      color: #0a1a3e !important;
+    }
+
+    body.light-mode footer textarea {
+      background: #e8f4fc !important;
+      color: #0a2a5e !important;
+      border: 1px solid rgba(0, 80, 160, .2) !important;
+    }
+
+    /* ===== TOGGLE BUTTON ===== */
+    .theme-toggle {
+      background: none;
+      border: 2px solid rgba(255, 255, 255, .5);
+      border-radius: 20px;
+      padding: 4px 14px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin-left: 16px;
+      transition: all 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, .2);
+    }
+
+    body.light-mode .theme-toggle {
+      border-color: #0a2a5e;
+      color: #0a2a5e;
+    }
+
+    body.light-mode .theme-toggle:hover {
+      background: rgba(10, 42, 94, .1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition: background 0.3s, color 0.3s;
+    }
+
+    * {
+      font-family: Poppins, sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      /* background: linear-gradient(to bottom, #0c1424, #121c32); */
+            background: linear-gradient(135deg, #214083e6, #1b3a75, #2f5fa8);
+
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 60px;
+      background: var(--nav);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 18px #00000073;
+      font-size: larger;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 22px;
+      font-weight: 500;
+      opacity: .9;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .logo {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .logo img {
+      height: 100px;
+      width: auto;
+    }
+
+    .hero {
+      background: url('static/home.jpg') center/cover no-repeat;
+      height: 460px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      color: #BDE8F5;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(12, 20, 36, .92), rgba(12, 20, 36, .6));
+    }
+
+    .hero div {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      margin-top: 30px;
+    }
+
+    .btn a {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 15px 35px;
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      box-shadow: 0 10px 28px rgba(47, 128, 237, .45);
+    }
+
+    .medical-assistant {
+      color: #ffffff;
+    }
+
+    .ai-chatbot {
+      padding: 90px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #214083e6, #1b3a75, #2f5fa8);
+    }
+
+    .ai-wrapper {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 90px;
+      margin-top: -60px;
+    }
+
+    .ai-chatbot h2 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .ai-sub {
+      color: #cfe3ff;
+      margin-bottom: 40px;
+    }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .ai-card {
+      background: rgba(255, 255, 255, .92);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+    }
+
+    .ai-card h4 {
+      margin-bottom: 8px;
+      color: #214083;
+    }
+
+    .ai-card p {
+      font-size: .9rem;
+      color: #345;
+    }
+
+    @media(max-width:900px) {
+      .ai-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:550px) {
+      .ai-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .how-section {
+      padding: 50px 20px 90px;
+      /* background: linear-gradient(135deg, #0c1424, #101f3d, #0b1730); */
+
+      background: linear-gradient(135deg, #214083e6, #1b3a75, #2f5fa8);
+      text-align: center;
+    }
+
+    .how-it-works {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 90px;
+      margin-top: 0;
+    }
+
+    .how-it-works h3 {
+      font-size: 2.4rem;
+      color: #eaf2ff;
+      margin-top: 30px;
+    }
+
+    .how-sub {
+      color: #9fb3d1;
+      margin-bottom: 30px;
+      margin-top: -30px;
+    }
+
+    .chat-btn {
+      margin: 0px 0 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 18px 48px;
+      border: none;
+      border-radius: 40px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      box-shadow: 0 14px 35px rgba(47, 128, 237, .55);
+      transition: .3s;
+    }
+
+    .chat-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 35px rgba(47, 128, 237, .65);
+    }
+
+    .steps {
+      position: relative;
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.92);
+      position: relative;
+      z-index: 1;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 16px;
+      padding: 26px 18px;
+    }
+
+    .step-card span {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 12px;
+      background: #214083;
+      margin-top: -50px;
+      font-size: 20px;
+    }
+
+    .step-card h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 12px 0 8px;
+      color: #0b1730;
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      color: #1b2a44;
+    }
+
+    @media(max-width:900px) {
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:550px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chatbot-container {
+      display: none;
+      position: fixed;
+      right: 30px;
+      bottom: 100px;
+      z-index: 9999;
+      width: 400px;
+      height: 500px;
+      border-radius: 26px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, .08));
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, .35);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .35), inset 0 0 30px rgba(255, 255, 255, .25), inset 0 0 2px rgba(255, 255, 255, .6);
+    }
+
+    .chatbox {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 10px 4px 10px 8px;
+    }
+
+    .userText {
+      text-align: right;
+    }
+
+    .botText {
+      text-align: left;
+      margin-left: -13px;
+    }
+
+    .userText span,
+    .botText span {
+      display: inline-block;
+      max-width: 75%;
+      padding: 10px 15px;
+      margin: 6px;
+      border-radius: 18px;
+      font-size: 12px;
+      line-height: 1.4;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+    }
+
+    .userText span {
+      float: right;
+      clear: both;
+      background: linear-gradient(135deg, #2f80ed, #56ccf2);
+      color: white;
+      box-shadow: 0 8px 18px rgba(47, 128, 237, .45), inset 0 0 10px rgba(255, 255, 255, .25);
+    }
+
+    .botText span {
+      float: left;
+      clear: both;
+      background: rgba(20, 30, 60, .55);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, .25);
+      color: #eaf2ff;
+    }
+
+    select {
+      width: 100%;
+      height: 42px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      padding: 0 14px;
+      background: rgba(20, 30, 60, .5);
+      color: #eaf2ff;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+    }
+
+    .input-container {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .input-container input {
+      flex: 1;
+      height: 42px;
+      padding: 0 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      background: rgba(20, 30, 60, .5);
+      color: #eaf2ff;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .input-container input::placeholder {
+      color: #9fb3d1;
+    }
+
+    .input-container button {
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 20px;
+      border: none;
+      background: linear-gradient(135deg, #2f80ed, #2ec4b6);
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(47, 128, 237, .45);
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+
+    .input-container button:hover {
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+
+    .chat-icon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      cursor: pointer;
+    }
+
+    .chat-icon img {
+      width: 56px;
+      filter: drop-shadow(0 6px 14px rgba(47, 128, 237, .5));
+    }
+
+    footer {
+      padding: 60px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      /* background: linear-gradient(135deg, #214083e6, #1b3a75, #2f5fa8); */
+      background: linear-gradient(135deg, #0c1424, #101f3d, #363d4d);
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      align-items: flex-start;
+    }
+
+    footer p {
+      color: var(--muted);
+    }
+
+    footer textarea {
+      width: 100%;
+      min-height: 130px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      padding: 12px;
+      background: #0f1a2e;
+      color: white;
+      font-size: 14px;
+    }
+
+    footer button {
+      margin-top: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border: none;
+      padding: 9px 20px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ===== FOOTER STAR RATING ===== */
+    .footer-stars {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .footer-stars input { display: none; }
+    .footer-stars label {
+      font-size: 32px;
+      cursor: pointer;
+      color: rgba(255,255,255,.15);
+      transition: color 0.2s, transform 0.15s;
+    }
+    body.light-mode .footer-stars label { color: rgba(0,0,0,.1); }
+    .footer-stars input:checked ~ label,
+    .footer-stars label:hover,
+    .footer-stars label:hover ~ label {
+      color: #f5a623;
+      transform: scale(1.1);
+    }
+
+    footer p strong {
+      color: #ffffff;
+    }
+
+    footer h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #BDE8F5;
+      margin-bottom: 20px;
+    }
+
+    /* ===== HEALTH LOG ===== */
+    .health-section {
+      padding: 70px 20px;
+      /* background: linear-gradient(135deg, #0f1e3d, #0c1a35, #0f1e3d); */
+      background: linear-gradient(135deg, #0c1424, #101f3d, #363d4d);
+      text-align: center;
+    }
+
+    .health-wrapper {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 60px;
+    }
+
+    .health-section h2 {
+      font-size: 2.6rem;
+      color: #eaf2ff;
+      margin-bottom: 8px;
+    }
+
+    .health-sub {
+      color: #9fb3d1;
+      margin-bottom: 40px;
+    }
+
+    .health-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 25px;
+      border: 2px solid rgba(255, 255, 255, .2);
+      background: transparent;
+      color: #9fb3d1;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: Poppins, sans-serif;
+      transition: .3s;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #2f80ed, #2ec4b6);
+      border-color: transparent;
+      color: white;
+    }
+
+    .health-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    @media(max-width:700px) {
+      .health-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .log-form-card {
+      background: rgba(255, 255, 255, .07);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .log-form-card h4 {
+      color: #eaf2ff;
+      margin: 0 0 18px;
+      font-size: 1.1rem;
+    }
+
+    .log-input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(20, 30, 60, .6);
+      color: #eaf2ff;
+      font-size: 14px;
+      font-family: Poppins, sans-serif;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+    }
+
+    .log-input::placeholder {
+      color: #9fb3d1;
+    }
+
+    .log-submit {
+      width: 100%;
+      padding: 11px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #2f80ed, #2ec4b6);
+      color: white;
+      font-size: 14px;
+      font-family: Poppins, sans-serif;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .log-submit:hover {
+      opacity: .9;
+    }
+
+    .chart-card {
+      background: rgba(255, 255, 255, .07);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .chart-card h4 {
+      color: #eaf2ff;
+      margin: 0 0 16px;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    body.light-mode .health-section {
+      background: linear-gradient(135deg, #54c1fc, #d9f0ff, #54c1fc) !important;
+    }
+
+    body.light-mode .health-section h2 {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode .health-sub {
+      color: #1a4a7a !important;
+    }
+
+    body.light-mode .tab-btn {
+      border-color: rgba(0, 80, 160, .3);
+      color: #1a4a7a;
+    }
+
+    body.light-mode .tab-btn.active {
+      color: white;
+    }
+
+    body.light-mode .log-form-card {
+      background: #d8eef8 !important;
+      border-color: rgba(0, 80, 160, .2) !important;
+    }
+
+    body.light-mode .log-form-card h4 {
+      color: #0a2a5e !important;
+    }
+
+    body.light-mode .log-input {
+      background: #e8f4fc !important;
+      color: #0a2a5e !important;
+      border-color: rgba(0, 80, 160, .25) !important;
+    }
+
+    body.light-mode .log-input::placeholder {
+      color: #3a6a9a !important;
+    }
+
+    body.light-mode .chart-card {
+      background: #d8eef8 !important;
+      border-color: rgba(0, 80, 160, .2) !important;
+    }
+
+    .period-btns { display: flex; gap: 8px; }
+    .period-btn {
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1.5px solid rgba(255,255,255,.25);
+      background: transparent;
+      color: #9fb3d1;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: Poppins, sans-serif;
+      transition: .2s;
+    }
+    .period-btn.active {
+      background: linear-gradient(135deg, #2f80ed, #2ec4b6);
+      border-color: transparent;
+      color: white;
+    }
+    body.light-mode .period-btn { border-color: rgba(0,80,160,.3); color: #1a4a7a; }
+    body.light-mode .period-btn.active { color: white; }
+
+    .entry-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 5px;
+      font-size: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    body.light-mode .entry-item { background: rgba(0,80,160,.07); border-color: rgba(0,80,160,.15); }
+    .entry-meta { color: #9fb3d1; flex: 1; min-width: 120px; }
+    .entry-val { color: #eaf2ff; font-weight: 600; }
+    body.light-mode .entry-val { color: #0a2a5e; }
+    body.light-mode .entry-meta { color: #3a6a9a; }
+    .entry-note { color: #7ec8e3; font-size: 12px; flex: 2; }
+    body.light-mode .entry-note { color: #1a6a9a; }
+    .entry-actions { display: flex; gap: 6px; }
+    .entry-edit-btn, .entry-del-btn {
+      padding: 4px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: Poppins, sans-serif;
+    }
+    .entry-edit-btn { background: #5195ed4d; color: #7ec8e3; }
+    .entry-del-btn  { background: rgba(237,80,80,.25); color: #ec6363; }
+    .entry-edit-btn:hover { background: rgba(47,128,237,.55); }
+    .entry-del-btn:hover  { background: rgba(237,80,80,.5); }
+
+    body.light-mode .entry-edit-btn{
+      background: #5195ed4d; color: #164f8d;
+    }
+
+    /* Edit modal */
+    #editModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    #editModal.open { display: flex; }
+    .edit-box {
+      background: #1b2e50;
+      border-radius: 16px;
+      padding: 28px;
+      width: 340px;
+      max-width: 90vw;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+    body.light-mode .edit-box { background: #e4f2fc; border-color: rgba(0,80,160,.2); }
+    .edit-box h4 { color: #eaf2ff; margin: 0 0 16px; }
+    body.light-mode .edit-box h4 { color: #0a2a5e; }
+    .edit-box-btns { display: flex; gap: 10px; margin-top: 16px; }
+    .edit-save-btn {
+      flex: 1; padding: 9px; border-radius: 10px; border: none;
+      background: linear-gradient(135deg, #2f80ed, #2ec4b6);
+      color: white; cursor: pointer; font-family: Poppins, sans-serif; font-weight: 600;
+    }
+    .edit-cancel-btn {
+      flex: 1; padding: 9px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: transparent; color: #9fb3d1;
+      cursor: pointer; font-family: Poppins, sans-serif;
+    }
+    body.light-mode .edit-cancel-btn { border-color: rgba(0,80,160,.3); color: #1a4a7a; }
+
+    body.light-mode .chart-card h4 {
+      color: #0a2a5e !important;
+    }
+
+    .footer-contact {
+      flex: 2;
+    }
+
+    .footer-feedback {
+      flex: 1;
+      max-width: 1500px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo"><img src="/static/LOGO.png" alt="Logo"></div>
+    <div>
+      <a href="#">HOME</a>
+      <a href="#services">SERVICES</a>
+      <a href="/history">CHAT HISTORY</a>
+      <a href="#healthlog">HEALTH LOG</a>
+      <a href="#footer">CONTACT</a>
+      <a href="/login">LOGOUT</a>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1><span class="medical-assistant">HEALMATE</span>, your personal <span class="medical-assistant"> Medical
+          Assistant </span> at your fingertips</h1>
+      <p>Get INSTANT medical guidance, symptom checks, and health advice powered by advanced AI. AVAILABLE anytime,
+        anywhere, at the click of a button.</p>
+      <div class="btn"><a href="/patientregister">Get Started</a></div>
+    </div>
+  </section>
+
+  <section id="services" class="ai-chatbot">
+    <div class="ai-wrapper">
+      <h2>Everything You Need for Better Health</h2>
+      <p class="ai-sub">Comprehensive healthcare support powered by cutting-edge AI technology</p>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <h4>Instant Response</h4>
+          <p>Get immediate answers without waiting rooms.</p>
+        </div>
+        <div class="ai-card">
+          <h4>24/7 Availability</h4>
+          <p>Access healthcare guidance anytime.</p>
+        </div>
+        <div class="ai-card">
+          <h4>Smart Symptom Check</h4>
+          <p>Describe symptoms and get guidance.</p>
+        </div>
+        <div class="ai-card">
+          <h4>Multi-Language</h4>
+          <p>Communicate in your preferred language.</p>
+        </div>
+        <div class="ai-card">
+          <h4>Fast & Secure</h4>
+          <p>Optimized for speed and privacy.</p>
+        </div>
+        <div class="ai-card">
+          <h4>AI Powered</h4>
+          <p>Built using intelligent healthcare models.</p>
+        </div>
+      </div>
+      <button class="chat-btn" onclick="toggleChatbot()">Open AI Assistant</button>
+    </div>
+  </section>
+
+  <section id="healthlog" class="health-section">
+    <div class="health-wrapper">
+      <h2>Health Log</h2>
+      <p class="health-sub">Track your vitals over time and monitor your trends</p>
+      <div class="health-tabs">
+        <button class="tab-btn active" onclick="switchTab('blood_sugar', this)">🩸 Blood Sugar</button>
+        <button class="tab-btn" onclick="switchTab('blood_pressure', this)">💓 Blood Pressure</button>
+        <button class="tab-btn" onclick="switchTab('weight', this)">⚖️ Weight</button>
+      </div>
+      <div class="health-grid">
+        <div class="log-form-card">
+          <h4 id="formTitle">Log Blood Sugar</h4>
+          <div id="form_blood_sugar">
+            <input class="log-input" type="number" id="bs_value" placeholder="Blood Sugar (mg/dL)" min="0" max="600">
+            <input class="log-input" type="text" id="bs_note" placeholder="Note (e.g. after meal, fasting)">
+            <button class="log-submit" onclick="submitLog('blood_sugar')">Save Entry</button>
+          </div>
+          <div id="form_blood_pressure" style="display:none;">
+            <input class="log-input" type="number" id="bp_systolic" placeholder="Systolic (mmHg)" min="0" max="300">
+            <input class="log-input" type="number" id="bp_diastolic" placeholder="Diastolic (mmHg)" min="0" max="200">
+            <input class="log-input" type="text" id="bp_note" placeholder="Note (e.g. morning reading)">
+            <button class="log-submit" onclick="submitLog('blood_pressure')">Save Entry</button>
+          </div>
+          <div id="form_weight" style="display:none;">
+            <input class="log-input" type="number" id="wt_value" placeholder="Weight (kg)" min="0" max="300" step="0.1">
+            <input class="log-input" type="text" id="wt_note" placeholder="Note (e.g. morning, after workout)">
+            <button class="log-submit" onclick="submitLog('weight')">Save Entry</button>
+          </div>
+          <p id="logMsg" style="margin-top:12px;font-size:13px;color:#2ec4b6;display:none;">✅ Entry saved!</p>
+        </div>
+        <div class="chart-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+            <h4 id="chartTitle" style="margin:0;">Blood Sugar Trend</h4>
+            <div class="period-btns">
+              <button class="period-btn" onclick="setPeriod('day', this)">Day</button>
+              <button class="period-btn active" onclick="setPeriod('week', this)">Week</button>
+              <button class="period-btn" onclick="setPeriod('month', this)">Month</button>
+            </div>
+          </div>
+          <canvas id="healthChart" height="200"></canvas>
+          <p id="noDataMsg" style="color:#9fb3d1;font-size:13px;margin-top:10px;display:none;">No data yet. Add your first entry!</p>
+          <div id="entriesList" style="margin-top:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="how-it-works">
+      <h3>HOW IT WORKS</h3>
+      <p class="how-sub">Simple steps to start your healthcare journey</p>
+      <div class="steps">
+        <div class="step-card"><span>1</span>
+          <h4>Start a Conversation</h4>
+          <p>Simply type your health question or describe your symptoms in plain language.</p>
+        </div>
+        <div class="step-card"><span>2</span>
+          <h4>AI Analysis</h4>
+          <p>Our advanced AI analyzes your input and accesses a vast medical knowledge base.</p>
+        </div>
+        <div class="step-card"><span>3</span>
+          <h4>Get Guidance</h4>
+          <p>Receive personalized health advice, symptom analysis, and next steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-contact">
+      <h3>CONTACT HEALMATE</h3>
+      <p>We're here to support you on your healthcare journey.<br>Reach out to us for technical help, feedback, or
+        medical assistant queries.</p>
+      <p style="color:white;"><strong>Email:</strong> <a href="mailto:support@heamate.com" style="color:#9fb3d1 ;"> support@healmate.com</span></a></p>
+      <p><strong>Phone:</strong> +91 1234567890</p>
+      <p><strong>Availability:</strong> 24/7 Online Support</p>
+    </div>
+    <div class="footer-feedback">
+      <h3>FEEDBACK</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <p style="color:var(--muted);font-size:14px;margin:0;">How's your experience with HealMate?</p>
+        <div class="footer-stars">
+          <input type="radio" name="footer_rating" id="fs5" value="5">
+          <label for="fs5" title="Excellent">★</label>
+          <input type="radio" name="footer_rating" id="fs4" value="4">
+          <label for="fs4" title="Good">★</label>
+          <input type="radio" name="footer_rating" id="fs3" value="3">
+          <label for="fs3" title="Average">★</label>
+          <input type="radio" name="footer_rating" id="fs2" value="2">
+          <label for="fs2" title="Poor">★</label>
+          <input type="radio" name="footer_rating" id="fs1" value="1">
+          <label for="fs1" title="Terrible">★</label>
+        </div>
+      </div>
+      <div id="footerRatingText" style="font-size:13px;color:#2ec4b6;min-height:18px;margin:4px 0 12px;"></div>
+
+      <textarea id="footerFeedbackText" rows="4" placeholder="Share your thoughts (optional)..."></textarea><br>
+      <div id="footerFeedbackError" style="display:none;color:#e74c3c;font-size:12px;margin-top:6px;">Please select a star rating.</div>
+      <button onclick="submitFooterFeedback()" id="footerSubmitBtn">Submit</button>
+      <div id="footerSuccess" style="display:none;color:#2ec4b6;font-size:14px;margin-top:10px;">✅ Thank you for your feedback!</div>
+    </div>
+  </footer>
+
+  <!-- Edit Entry Modal -->
+  <div id="editModal">
+    <div class="edit-box">
+      <h4>Edit Entry</h4>
+      <input class="log-input" type="hidden" id="editId">
+      <input class="log-input" type="number" id="editVal1" placeholder="Value">
+      <input class="log-input" type="number" id="editVal2" placeholder="Diastolic (mmHg)" style="display:none;">
+      <input class="log-input" type="text" id="editNote" placeholder="Note">
+      <div class="edit-box-btns">
+        <button class="edit-cancel-btn" onclick="closeEditModal()">Cancel</button>
+        <button class="edit-save-btn" onclick="saveEdit()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="chatbot-container">
+    <div class="chatbox">
+      <div id="chatbox-float" class="chat-messages"></div>
+      <select id="language-float">
+        <option value="en">English</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="hi">हिंदी (Hindi)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="fr">Français (French)</option>
+        <option value="ur">اردو (Urdu)</option>
+      </select>
+      <div class="input-container">
+        <input id="text-float" type="text" placeholder="Start your chat here">
+        <button id="send-float" type="button">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-icon" onclick="toggleChatbot()">
+    <img src="static/bot.png" alt="Chat">
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function toggleChatbot() {
+      const box = document.querySelector(".chatbot-container");
+      box.style.display = (box.style.display === "flex") ? "none" : "flex";
+    }
+    $(function () {
+      function sendMessage() {
+        let msg = $("#text-float").val();
+        let lang = $("#language-float").val();
+        if (!msg || msg.trim() === "") return;
+        $("#chatbox-float").append('<p class="userText"><span>' + msg + '</span></p>');
+        $("#text-float").val("");
+        $.post("/get", { msg: msg, lang: lang })
+          .done(function (data) {
+            $("#chatbox-float").append('<p class="botText"><span>' + data.replace(/\n/g, "<br>") + '</span></p>');
+            $("#chatbox-float").scrollTop($("#chatbox-float")[0].scrollHeight);
+          })
+          .fail(function () {
+            $("#chatbox-float").append('<p class="botText"><span>Server error.</span></p>');
+          });
+      }
+      $("#send-float").on("click", sendMessage);
+      $("#text-float").on("keypress", function (e) {
+        if (e.which === 13) { sendMessage(); e.preventDefault(); }
+      });
+    });
+  </script>
+
+  <script>
+    (function () {
+      if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-mode");
+        document.getElementById("themeBtn").textContent = "🌙";
+      }
+    })();
+
+    function toggleTheme() {
+      var body = document.body;
+      var btn = document.getElementById("themeBtn");
+      if (body.classList.contains("light-mode")) {
+        body.classList.remove("light-mode");
+        btn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      } else {
+        body.classList.add("light-mode");
+        btn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
+      loadChart(currentTab);
+    }
+  </script>
+
+  {% if message %}
+  <p style="color: green; font-weight: bold;">{{ message }}</p>
+  {% endif %}
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    var currentTab = "blood_sugar";
+    var currentPeriod = "week";
+    var healthChart = null;
+    var tabLabels = { blood_sugar: "Blood Sugar", blood_pressure: "Blood Pressure", weight: "Weight" };
+
+    // Load the chart on page load
+    window.addEventListener("DOMContentLoaded", function () {
+      loadChart(currentTab);
+    });
+
+    function switchTab(tab, btn) {
+      currentTab = tab;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      ["blood_sugar", "blood_pressure", "weight"].forEach(t => {
+        document.getElementById("form_" + t).style.display = (t === tab) ? "block" : "none";
+      });
+      document.getElementById("formTitle").textContent = "Log " + tabLabels[tab];
+      document.getElementById("chartTitle").textContent = tabLabels[tab] + " Trend";
+      document.getElementById("logMsg").style.display = "none";
+      loadChart(tab);
+    }
+
+    function setPeriod(period, btn) {
+      currentPeriod = period;
+      document.querySelectorAll(".period-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      loadChart(currentTab);
+    }
+
+    function submitLog(type) {
+      var data = { log_type: type };
+      if (type === "blood_sugar") {
+        var v = document.getElementById("bs_value").value;
+        if (!v) { alert("Please enter blood sugar value"); return; }
+        data.value1 = v; data.note = document.getElementById("bs_note").value;
+      } else if (type === "blood_pressure") {
+        var s = document.getElementById("bp_systolic").value;
+        var d = document.getElementById("bp_diastolic").value;
+        if (!s || !d) { alert("Please enter both systolic and diastolic values"); return; }
+        data.value1 = s; data.value2 = d; data.note = document.getElementById("bp_note").value;
+      } else if (type === "weight") {
+        var w = document.getElementById("wt_value").value;
+        if (!w) { alert("Please enter weight"); return; }
+        data.value1 = w; data.note = document.getElementById("wt_note").value;
+      }
+      $.post("/health_log/add", data, function (res) {
+        if (res === "success") {
+          var msg = document.getElementById("logMsg");
+          msg.style.display = "block";
+          setTimeout(() => msg.style.display = "none", 3000);
+          document.querySelectorAll("#form_" + type + " .log-input").forEach(i => i.value = "");
+          loadChart(type);
+        }
+      });
+    }
+
+    // Fix 1 & 2: For week, reduce to first+last per day, label as date only
+    function filterWeekRecords(records) {
+      var byDay = {};
+      records.forEach(function(r) {
+        var day = r.timestamp.slice(0, 10); // YYYY-MM-DD
+        if (!byDay[day]) byDay[day] = [];
+        byDay[day].push(r);
+      });
+      var result = [];
+      Object.keys(byDay).sort().forEach(function(day) {
+        var entries = byDay[day];
+        if (entries.length === 1) {
+          result.push(entries[0]);
+        } else {
+          result.push(entries[0]);                        // first of day
+          result.push(entries[entries.length - 1]);       // last of day
+        }
+      });
+      return result;
+    }
+
+    function formatLabel(timestamp) {
+      var d = new Date(timestamp);
+      if (currentPeriod === "day") {
+        return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      } else if (currentPeriod === "week") {
+        // Fix 2: date only for week
+        return d.toLocaleDateString([], { day: "2-digit", month: "short" });
+      } else {
+        // month: date only
+        return d.toLocaleDateString([], { day: "2-digit", month: "short" });
+      }
+    }
+
+    // Fix 3: scrollable entries list, max 3 visible, compact
+    function renderEntries(records, type) {
+      var container = document.getElementById("entriesList");
+      if (!records.length) { container.innerHTML = ""; return; }
+      var unit = type === "blood_sugar" ? "mg/dL" : type === "weight" ? "kg" : "";
+      var sorted = records.slice().reverse();
+      var itemsHtml = "";
+      sorted.forEach(function(r) {
+        var valStr = type === "blood_pressure"
+          ? r.value1 + "/" + r.value2 + " mmHg"
+          : r.value1 + " " + unit;
+        var ts = new Date(r.timestamp).toLocaleString([], { day:"2-digit", month:"short", hour:"2-digit", minute:"2-digit" });
+        itemsHtml += '<div class="entry-item">' +
+          '<span class="entry-meta">' + ts + '</span>' +
+          '<span class="entry-val">' + valStr + '</span>' +
+          '<span class="entry-note">' + (r.note || "") + '</span>' +
+          '<span class="entry-actions">' +
+            '<button class="entry-edit-btn" onclick="openEditModal(' + r.id + ',' + r.value1 + ',\'' + (r.value2||"") + '\',\'' + (r.note||"").replace(/'/g,"\\'") + '\',\'' + type + '\')">Edit</button>' +
+            '<button class="entry-del-btn" onclick="deleteEntry(' + r.id + ')">Delete</button>' +
+          '</span>' +
+        '</div>';
+      });
+      container.innerHTML =
+        '<p style="color:#9fb3d1;font-size:11px;margin:0 0 6px;text-align:left;">Entries (' + sorted.length + ')</p>' +
+        '<div style="max-height:108px;overflow-y:auto;padding-right:4px;">' + itemsHtml + '</div>';
+    }
+
+    function loadChart(type) {
+      $.get("/health_log/data?log_type=" + type + "&period=" + currentPeriod, function (raw) {
+        var allRecords = JSON.parse(raw);
+        var noData = document.getElementById("noDataMsg");
+        var canvas = document.getElementById("healthChart");
+
+        // Filter records by selected period on the frontend
+        var now = new Date();
+        var filteredRecords = allRecords.filter(function(r) {
+          var t = new Date(r.timestamp);
+          if (currentPeriod === "day") {
+            return t.getFullYear() === now.getFullYear() &&
+                   t.getMonth() === now.getMonth() &&
+                   t.getDate() === now.getDate();
+          } else if (currentPeriod === "week") {
+            return (now - t) <= 7 * 86400000;
+          } else if (currentPeriod === "month") {
+            return t.getFullYear() === now.getFullYear() &&
+                   t.getMonth() === now.getMonth();
+          }
+          return true;
+        });
+
+        // Always show all entries in the list regardless of period
+        renderEntries(allRecords, type);
+
+        // For week view, reduce to first+last per day on chart
+        var chartRecords = (currentPeriod === "week") ? filterWeekRecords(filteredRecords) : filteredRecords;
+
+        if (chartRecords.length === 0) {
+          noData.style.display = "block"; canvas.style.display = "none";
+          if (healthChart) { healthChart.destroy(); healthChart = null; }
+          return;
+        }
+        noData.style.display = "none"; canvas.style.display = "block";
+        var labels = chartRecords.map(r => formatLabel(r.timestamp));
+        var isDark = !document.body.classList.contains("light-mode");
+        var textColor = isDark ? "#7ec8e3" : "#0a2a5e";
+        var gridColor = isDark ? "rgba(255,255,255,.1)" : "rgba(0,80,160,.1)";
+
+        // Fix 4: compute y-axis min/max with padding
+        function getYAxis(vals) {
+          var min = Math.min.apply(null, vals.filter(v => v !== null && v !== undefined));
+          var max = Math.max.apply(null, vals.filter(v => v !== null && v !== undefined));
+          return { min: Math.floor(min) - 3, max: Math.ceil(max) + 3 };
+        }
+
+        var datasets = [];
+        var yAxis;
+        if (type === "blood_pressure") {
+          var sys = chartRecords.map(r => parseFloat(r.value1));
+          var dia = chartRecords.map(r => parseFloat(r.value2));
+          yAxis = getYAxis(sys.concat(dia));
+          datasets = [
+            { label: "Systolic", data: sys, borderColor: "#2f80ed", backgroundColor: "rgba(47,128,237,.15)", tension: 0.4, fill: true, pointRadius: 4 },
+            { label: "Diastolic", data: dia, borderColor: "#2ec4b6", backgroundColor: "rgba(46,196,182,.15)", tension: 0.4, fill: true, pointRadius: 4 }
+          ];
+        } else {
+          var color = type === "blood_sugar" ? "#2f80ed" : "#2ec4b6";
+          var bgColor = type === "blood_sugar" ? "rgba(47,128,237,.15)" : "rgba(46,196,182,.15)";
+          var unit = type === "blood_sugar" ? "mg/dL" : "kg";
+          var vals = chartRecords.map(r => parseFloat(r.value1));
+          yAxis = getYAxis(vals);
+          datasets = [{ label: unit, data: vals, borderColor: color, backgroundColor: bgColor, tension: 0.4, fill: true, pointRadius: 4 }];
+        }
+        if (healthChart) healthChart.destroy();
+        healthChart = new Chart(canvas, {
+          type: "line", data: { labels: labels, datasets: datasets },
+          options: {
+            responsive: true,
+            plugins: { legend: { labels: { color: textColor, font: { family: "Poppins" } } } },
+            scales: {
+              x: { ticks: { color: textColor, maxRotation: 45 }, grid: { color: gridColor } },
+              y: { min: yAxis.min, max: yAxis.max, ticks: { color: textColor }, grid: { color: gridColor } }
+            }
+          }
+        });
+      });
+    }
+
+    function openEditModal(id, val1, val2, note, type) {
+      document.getElementById("editId").value = id;
+      document.getElementById("editVal1").value = val1;
+      document.getElementById("editNote").value = note;
+      var val2Field = document.getElementById("editVal2");
+      if (type === "blood_pressure") {
+        val2Field.style.display = "block";
+        val2Field.value = val2;
+        document.getElementById("editVal1").placeholder = "Systolic (mmHg)";
+      } else {
+        val2Field.style.display = "none";
+        val2Field.value = "";
+        document.getElementById("editVal1").placeholder = type === "blood_sugar" ? "Blood Sugar (mg/dL)" : "Weight (kg)";
+      }
+      document.getElementById("editModal").classList.add("open");
+    }
+
+    function closeEditModal() {
+      document.getElementById("editModal").classList.remove("open");
+    }
+
+    function saveEdit() {
+      var id = document.getElementById("editId").value;
+      var val1 = document.getElementById("editVal1").value;
+      var val2 = document.getElementById("editVal2").value;
+      var note = document.getElementById("editNote").value;
+      $.post("/health_log/edit", { id: id, value1: val1, value2: val2 || null, note: note }, function(res) {
+        if (res === "success") { closeEditModal(); loadChart(currentTab); }
+      });
+    }
+
+    function deleteEntry(id) {
+      if (!confirm("Delete this entry?")) return;
+      $.post("/health_log/delete", { id: id }, function(res) {
+        if (res === "success") loadChart(currentTab);
+      });
+    }
+
+    // ===== FOOTER FEEDBACK =====
+    const footerRatingLabels = { 1:"Terrible 😞", 2:"Poor 😕", 3:"Average 😐", 4:"Good 😊", 5:"Excellent 🌟" };
+    document.querySelectorAll('input[name="footer_rating"]').forEach(r => {
+      r.addEventListener("change", function() {
+        document.getElementById("footerRatingText").textContent = footerRatingLabels[this.value];
+        document.getElementById("footerFeedbackError").style.display = "none";
+      });
+    });
+
+    function submitFooterFeedback() {
+      const rating = document.querySelector('input[name="footer_rating"]:checked');
+      if (!rating) {
+        document.getElementById("footerFeedbackError").style.display = "block";
+        return;
+      }
+      const text = document.getElementById("footerFeedbackText").value.trim();
+      const btn = document.getElementById("footerSubmitBtn");
+      btn.disabled = true;
+      btn.textContent = "Submitting...";
+
+      const fd = new FormData();
+      fd.append("rating", rating.value);
+      fd.append("feedback", text);
+
+      fetch("/feedback", { method: "POST", body: fd })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === "success") {
+            document.getElementById("footerSuccess").style.display = "block";
+            btn.style.display = "none";
+            document.getElementById("footerFeedbackText").style.display = "none";
+            document.querySelector(".footer-stars").style.display = "none";
+            document.getElementById("footerRatingText").style.display = "none";
+          }
+        })
+        .catch(() => { btn.disabled = false; btn.textContent = "Submit"; });
+    }
+    // Render contact email via JS to prevent Cloudflare obfuscation
+    (function() {
+      var e = "support" + "@" + "healmate.com";
+      var el = document.getElementById("contactEmail");
+      if (el) { el.textContent = e; el.href = "mailto:" + e; }
+    })();
+
+  </script>
+</body>
+</html>
