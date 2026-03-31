@@ -1,0 +1,2123 @@
+{
+    "intents": [
+        {
+            "tag": "hi",
+            "patterns": [
+                "hi",
+                "Hi",
+                "hii",
+                "Hii",
+                "HI",
+                "HII",
+                "hello",
+                "HELLO",
+                "Hello",
+                "hey",
+                "HEY",
+                "Hey",
+                "heyy",
+                "HEYY",
+                "Heyy",
+                "good morning",
+                "good evening",
+                "good afternoon",
+                "how are you",
+                "is anyone there",
+                "what's up",
+                "greetings"
+            ],
+            "responses": [
+                "Hey! 👋 I'm HealMate, your personal health assistant. What's on your mind today?",
+                "Hi there! How are you feeling? I'm here to help with any health questions.",
+                "Hello! Great to see you. Tell me your symptoms or ask about any medicine — I'm here!",
+                "Hey! Feel free to ask me anything health-related — symptoms, medicines, or general advice.",
+                "Good to have you here! What health concern can I help you with today?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "bye",
+            "patterns": [
+                "Bye",
+                "byee",
+                "byeee",
+                "See you later",
+                "Goodbye",
+                "goodbye",
+                "Nice chatting to you, bye",
+                "Till next time",
+                "See You",
+                "see you",
+                "cya",
+                "bye bye",
+                "I am Leaving",
+                "Have a Good day",
+                "have a good day",
+                "talk to you later",
+                "ttyl",
+                "i got to go",
+                "gtg",
+                "take care",
+                "see ya",
+                "later",
+                "good night",
+                "goodnight",
+                "gn"
+            ],
+            "responses": [
+                "Goodbye! Take care and stay healthy!",
+                "See you later! Don't hesitate to return if you have more questions.",
+                "Byee! Wishing you a great day ahead!",
+                "Take care! Remember, your health is your wealth. Goodbye!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "Thankyou",
+                "thank you",
+                "thanks",
+                "That's helpful",
+                "Awesome",
+                "Thanks for helping me",
+                "Helpful",
+                "thank you so much",
+                "thanks a lot",
+                "much appreciated",
+                "appreciate it",
+                "that was helpful",
+                "great help",
+                "you helped me",
+                "ty",
+                "thx"
+            ],
+            "responses": [
+                "You're welcome! Take care of yourself 😊",
+                "Happy to help! Don't hesitate to come back if you have more questions.",
+                "Glad I could be of help! Wishing you a speedy recovery.",
+                "Anytime! Your health matters — stay safe and well! 🌿"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "creator",
+            "patterns": [
+                "what is the name of your developers",
+                "what is the name of your creators",
+                "what is the name of the developers",
+                "what is the name of the creators",
+                "who created you",
+                "your developers",
+                "your creators",
+                "who are your developers",
+                "developers",
+                "you are made by",
+                "you are made by whom",
+                "who create you",
+                "creators",
+                "who made you",
+                "who designed you",
+                "who built you",
+                "who developed you",
+                "who is your creator"
+            ],
+            "responses": [
+                "I was created by IV year students from Panimalar Engineering College.",
+                "Nadhiya, Manju Sri and Nivedha from PEC developed me!"
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "name",
+            "patterns": [
+                "name",
+                "your name",
+                "do you have a name",
+                "what are you called",
+                "what is your name",
+                "what should I call you",
+                "whats your name?",
+                "what are you",
+                "who are you",
+                "who is this",
+                "what am i chatting to",
+                "who am i talking to",
+                "what do you do",
+                "what can you do",
+                "tell me about yourself",
+                "introduce yourself",
+                "what is healmate"
+            ],
+            "responses": [
+                "I'm HealMate, your AI-powered medical assistant chatbot.",
+                "I am HealMate, here to help you with health queries, symptoms, and medicine information."
+            ],
+            "context_set": ""
+        },
+        {
+            "tag": "fever",
+            "patterns": [
+                "fever",
+                "Fever",
+                "high fever",
+                "High Fever",
+                "i have fever",
+                "i think i have fever",
+                "i am having fever",
+                "i got fever",
+                "suffering from fever",
+                "feeling feverish",
+                "my body is hot",
+                "i feel hot",
+                "temperature is high",
+                "i have been having fever",
+                "fever since yesterday",
+                "fever from morning"
+            ],
+            "responses": [
+                "Oh no, sorry to hear that! 🌡️ Could you tell me your body temperature in °F so I can guide you better?",
+                "Let's figure out how serious this is. What's your body temperature right now (in °F)?",
+                "I hope you feel better soon! Please share your temperature in °F and I'll advise you right away."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "low temp",
+            "patterns": [
+                "88",
+                "88.1",
+                "88.2",
+                "88.3",
+                "88.4",
+                "88.5",
+                "88.6",
+                "88.7",
+                "88.8",
+                "88.9",
+                "89",
+                "89.1",
+                "89.2",
+                "89.3",
+                "89.4",
+                "89.5",
+                "89.6",
+                "89.7",
+                "89.8",
+                "89.9",
+                "90",
+                "90.1",
+                "90.2",
+                "90.3",
+                "90.4",
+                "90.5",
+                "90.6",
+                "90.7",
+                "90.8",
+                "90.9",
+                "91",
+                "91.1",
+                "91.2",
+                "91.3",
+                "91.4",
+                "91.5",
+                "91.6",
+                "91.7",
+                "91.8",
+                "91.9",
+                "92",
+                "92.1",
+                "92.2",
+                "92.3",
+                "92.4",
+                "92.5",
+                "92.6",
+                "92.7",
+                "92.8",
+                "92.9",
+                "93",
+                "93.1",
+                "93.2",
+                "93.3",
+                "93.4",
+                "93.5",
+                "93.6",
+                "93.7",
+                "93.8",
+                "93.9",
+                "94",
+                "94.1",
+                "94.2",
+                "94.3",
+                "94.4",
+                "94.5",
+                "94.6",
+                "94.7",
+                "94.8",
+                "94.9",
+                "95",
+                "95.1",
+                "95.2",
+                "95.3",
+                "95.4",
+                "95.5",
+                "95.6",
+                "95.7",
+                "95.8",
+                "95.9",
+                "96",
+                "96.1",
+                "96.2",
+                "96.3",
+                "96.4",
+                "96.5",
+                "96.6",
+                "96.7",
+                "96.8",
+                "96.9",
+                "97",
+                "97.1",
+                "97.2",
+                "97.3",
+                "97.4",
+                "97.5",
+                "97.6",
+                "97.7",
+                "97.8",
+                "97.9",
+                "98",
+                "98.1",
+                "98.2",
+                "98.3",
+                "98.4",
+                "98.5",
+                "98.6",
+                "98.7",
+                "98.8",
+                "98.9",
+                "99"
+            ],
+            "responses": [
+                "Your body temperature is normal! You don't need any medication. If you feel tired, please take rest and stay hydrated.",
+                "This is a normal temperature — no need to worry. Rest well and drink plenty of fluids."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "mild temp",
+            "patterns": [
+                "99.1",
+                "99.2",
+                "99.3",
+                "99.4",
+                "99.5",
+                "99.6",
+                "99.7",
+                "99.8",
+                "99.9",
+                "100",
+                "100.1",
+                "100.2",
+                "100.3",
+                "100.4"
+            ],
+            "responses": [
+                "You have a mild fever. Rest as much as possible to support your immune system.",
+                "Drink plenty of fluids — water, herbal teas, and clear broths help a lot.",
+                "Fever can cause dehydration, so keep replenishing fluids.",
+                "Visit a doctor if the fever persists beyond 2 days or worsens."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "high temp",
+            "patterns": [
+                "100.5",
+                "100.6",
+                "100.7",
+                "100.8",
+                "100.9",
+                "101",
+                "101.1",
+                "101.2",
+                "101.3",
+                "101.4",
+                "101.5",
+                "101.6",
+                "101.7",
+                "101.8",
+                "101.9",
+                "102",
+                "102.1",
+                "102.2",
+                "102.3",
+                "102.4",
+                "102.5",
+                "102.6",
+                "102.7",
+                "102.8",
+                "102.9",
+                "103",
+                "103.1",
+                "103.2",
+                "103.3",
+                "103.4",
+                "103.5",
+                "103.6",
+                "103.7",
+                "103.8",
+                "103.9",
+                "104",
+                "104.1",
+                "104.2",
+                "104.3",
+                "104.4",
+                "104.5",
+                "104.6",
+                "104.7",
+                "104.8",
+                "104.9",
+                "105",
+                "105.1",
+                "105.2",
+                "105.3",
+                "105.4",
+                "105.5",
+                "105.6",
+                "105.7",
+                "105.8",
+                "105.9",
+                "106",
+                "106.1",
+                "106.2",
+                "106.3",
+                "106.4",
+                "106.5",
+                "106.6",
+                "106.7",
+                "106.8",
+                "106.9",
+                "107",
+                "107.1",
+                "107.2",
+                "107.3",
+                "107.4",
+                "107.5",
+                "107.6",
+                "107.7",
+                "107.8",
+                "107.9",
+                "108",
+                "108.1",
+                "108.2",
+                "108.3",
+                "108.4",
+                "108.5",
+                "108.6",
+                "108.7",
+                "108.8",
+                "108.9",
+                "109",
+                "109.1",
+                "109.2",
+                "109.3",
+                "109.4",
+                "109.5",
+                "109.6",
+                "109.7",
+                "109.8",
+                "109.9",
+                "110",
+                "110.1",
+                "110.2",
+                "110.3",
+                "110.4",
+                "110.5",
+                "110.6",
+                "110.7",
+                "110.8",
+                "110.9",
+                "111"
+            ],
+            "responses": [
+                "You have a high fever. Please consult a healthcare professional as soon as possible.",
+                "Use Paracetamol (Dolo 650mg) to reduce fever. Buy here: https://blinkit.com/prn/dolo-650mg-strip-of-15-tablets/prid/639498",
+                "If fever is with body pain or headache, Ibuprofen (Brufen 400mg) may help. Buy here: https://blinkit.com/prn/brufen-400mg-strip-of-20-tablets/prid/643637",
+                "If fever lasts more than 2 days with severe headache, throat pain, cough, or vomiting — consult a doctor."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "headache",
+            "patterns": [
+                "headache",
+                "head ache",
+                "migraine",
+                "head pain",
+                "tension headache",
+                "i have headache",
+                "i have head ache",
+                "i am having headache",
+                "i am having head ache",
+                "my head hurts",
+                "my head is paining",
+                "head is hurting",
+                "severe headache",
+                "what should i do for headache",
+                "what should i do for head ache",
+                "what to do for headache",
+                "i have a headache",
+                "my head aches",
+                "head throbbing",
+                "pain in head",
+                "my head is throbbing",
+                "splitting headache"
+            ],
+            "responses": [
+                "Sorry to hear that! 😔 Could you tell me more — is it a tension headache, migraine, or cluster headache? Or if unsure, where is the pain — forehead, temples, back of head, or one side?",
+                "Headaches can have different causes. Is it a throbbing pain on one side(migraine), a tight band around the head(tension), or severe pain around the eye(cluster)?",
+                "I can help! Is this a dull constant ache, a throbbing pain, or a sharp sudden pain? And where — forehead, temples, or back of head?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "headache_tension",
+            "patterns": [
+                "tension headache",
+                "tight band",
+                "pressure around head",
+                "both sides of head",
+                "forehead pain",
+                "head feels tight",
+                "stress headache",
+                "dull ache in head",
+                "constant head pain",
+                "head feels heavy",
+                "tension",
+                "both sides"
+            ],
+            "responses": [
+                "Sounds like a tension headache — the most common type. Here's what helps:\n\n💊 Paracetamol (500–1000mg) or Ibuprofen (400mg) can relieve pain effectively.\n🧘 Take a break from screens and rest in a quiet, dim room.\n💧 Drink water — dehydration is a very common trigger.\n🌡️ Apply a warm compress on the neck/shoulders or cold compress on forehead.\n😴 Make sure you're getting 7–8 hours of sleep — poor sleep causes tension headaches.\n💡 If this happens frequently, track your triggers (stress, posture, screen time).\n\nWould you like to know about migraine or cluster headaches too?"
+            ],
+            "context": [
+                "headache"
+            ]
+        },
+        {
+            "tag": "headache_migraine",
+            "patterns": [
+                "migraine",
+                "one side",
+                "throbbing pain",
+                "pulsing headache",
+                "light sensitivity",
+                "sound sensitivity",
+                "nausea with headache",
+                "aura",
+                "visual disturbance",
+                "vomiting with headache",
+                "half head pain",
+                "one side of head",
+                "migraine attack"
+            ],
+            "responses": [
+                "This sounds like a migraine. Here's how to manage it:\n\n💊 Ibuprofen (400mg) or Paracetamol taken early works best — don't wait until pain peaks.\n💊 Triptans (like Sumatriptan/Suminat 50mg) are prescribed specifically for migraines — consult your doctor.\n🌑 Lie down in a dark, quiet room — light and sound worsen migraines.\n🧊 Cold compress on the forehead or back of neck can help.\n🚫 Avoid triggers: bright lights, strong smells, skipping meals, dehydration, stress.\n💧 Stay well hydrated — drink water as soon as you feel a migraine coming on.\n🩺 If migraines occur more than 4 times a month, see a neurologist — preventive medicines are available.\n\n Would you like tips on preventing migraines long-term? Reply 'yes' to continue or 'no' to ask something else."
+            ],
+            "context": [
+                "headache"
+            ]
+        },
+        {
+            "tag": "headache_cluster",
+            "patterns": [
+                "cluster headache",
+                "eye pain with headache",
+                "pain around eye",
+                "one eye hurts",
+                "severe pain behind eye",
+                "cluster",
+                "watery eye with headache",
+                "pain near eye",
+                "eye socket pain"
+            ],
+            "responses": [
+                "Cluster headaches are very severe and usually felt around or behind one eye. Here's what to know:\n\n⚠️ These are very intense but short (15 min–3 hours) — they tend to come in 'clusters' over weeks.\n💊 High-flow oxygen therapy is one of the fastest relief methods — available in hospitals.\n💊 Sumatriptan injection or nasal spray can abort an attack quickly — requires prescription.\n🩺 Cluster headaches really need medical diagnosis — please consult a neurologist.\n❌ Regular painkillers like Paracetamol usually don't work well for cluster headaches.\n💡 Avoiding alcohol and smoking during a cluster period is very important."
+            ],
+            "context": [
+                "headache"
+            ]
+        },
+        {
+            "tag": "Stomach pain",
+            "patterns": [
+                "stomach pain",
+                "Stomach Pain",
+                "Stomach",
+                "stomach",
+                "I have stomach pain",
+                "My stomach hurts",
+                "Pain in my stomach",
+                "Abdominal pain",
+                "Tummy pain",
+                "Stomach cramps",
+                "stomach ache",
+                "Stomach Ache",
+                "my stomach is hurting",
+                "belly pain",
+                "belly ache",
+                "pain in abdomen",
+                "i have abdominal pain",
+                "my tummy hurts",
+                "stomach is upset",
+                "i have cramps",
+                "abdominal cramps"
+            ],
+            "responses": [
+                "Please specify the pain level — is it High, Moderate, or Low?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "high pain",
+            "patterns": [
+                "high",
+                "High",
+                "High Pain",
+                "high pain",
+                "very high",
+                "severe",
+                "severe pain",
+                "very bad",
+                "unbearable",
+                "extreme pain",
+                "very severe",
+                "too much pain",
+                "cannot bear"
+            ],
+            "responses": [
+                "Severe stomach pain requires urgent medical attention — please consult a doctor.",
+                "If pain is due to severe acidity or gastritis, Omeprazole or Pantoprazole may help. Buy here: https://blinkit.com/prn/pantop-20mg-strip-of-10-tablets/prid/639996",
+                "For crampy abdominal pain, Hyoscine Butylbromide may help. Buy here: https://blinkit.com/prn/buscogast-stomach-pain-tablets/prid/643574?srsltid=AfmBOooA-glj6qsPN98gURAw-SJETJSH1g6Gt09BdFIVjus3tnuKL3uF",
+                "For severe intestinal cramps/spasms, Cyclopam can be used. Buy here: https://blinkit.com/prn/cyclopam-fast-relief-strip-of-10-tablets/prid/667650",
+                "If pain is accompanied by fever, vomiting, or blood — seek emergency care immediately."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "moderate pain",
+            "patterns": [
+                "moderate",
+                "Moderate",
+                "moderate pain",
+                "Moderate Pain",
+                "medium",
+                "mid level",
+                "mid",
+                "normal",
+                "bearable",
+                "not too bad",
+                "medium pain",
+                "manageable pain",
+                "average pain"
+            ],
+            "responses": [
+                "Try taking an antacid (Calcium carbonate or Magnesium trisilicate) if you've had a heavy meal.",
+                "If pain is due to acidity, Omeprazole may help. Buy here: https://blinkit.com/prn/omez-20-strip-of-20-capsules/prid/643608",
+                "For stomach cramps, Cyclopam (Dicyclomine) can provide relief. Buy here: https://blinkit.com/prn/cyclopam-fast-relief-strip-of-10-tablets/prid/667650",
+                "Paracetamol is gentle on the stomach and can help with pain relief. Buy here: https://blinkit.com/prn/dolo-650mg-strip-of-15-tablets/prid/639498",
+                "Avoid spicy, oily food and observe if acidity or bloating is triggering the pain."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "low pain",
+            "patterns": [
+                "low",
+                "Low",
+                "Low Pain",
+                "low pain",
+                "mild",
+                "mild pain",
+                "slight pain",
+                "minor pain",
+                "little pain",
+                "not much pain",
+                "tolerable"
+            ],
+            "responses": [
+                "For mild stomach pain, rest and drink warm fluids.",
+                "Paracetamol can help with mild pain relief. Buy here: https://blinkit.com/prn/dolo-650mg-strip-of-15-tablets/prid/639498",
+                "If discomfort is due to gas or acidity, antacids like calcium carbonate may help.",
+                "For mild cramps, Cyclopam (Dicyclomine) can be used. Buy here: https://blinkit.com/prn/cyclopam-fast-relief-strip-of-10-tablets/prid/667650",
+                "Avoid heavy meals and try gentle exercises or stretches to relieve discomfort."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "high blood sugar",
+            "patterns": [
+                "diabeties",
+                "diabetes",
+                "blood sugar",
+                "high glucose",
+                "hyperglycemia",
+                "high blood glucose",
+                "i have very high blood sugar",
+                "i have high blood sugar",
+                "i have high sugar",
+                "i have very high sugar",
+                "sugar is high",
+                "blood sugar is high",
+                "glucose is high",
+                "i have diabetes",
+                "i am diabetic",
+                "sugar level is high"
+            ],
+            "responses": [
+                "Drink plenty of water and take your prescribed diabetes medication.",
+                "Medicines like Metformin help control high glucose over time. Buy here: https://blinkit.com/prn/glycomet-500mg-strip-of-10-tablets/prid/642170",
+                "Light physical activity like walking can help reduce blood sugar levels.",
+                "Monitor your blood sugar regularly and maintain a low-carb diet."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "low blood sugar",
+            "patterns": [
+                "low blood sugar",
+                "low glucose",
+                "hypoglycemia",
+                "low blood glucose",
+                "i have very low blood sugar",
+                "i have low blood sugar",
+                "i have low sugar",
+                "i have very low sugar",
+                "sugar is low",
+                "blood sugar is low",
+                "glucose is low",
+                "sugar level is low"
+            ],
+            "responses": [
+                "Consume a quick source of sugar such as glucose tablets, honey, or fruit juice immediately.",
+                "After initial sugar intake, eat a small balanced snack to prevent another drop.",
+                "Rest and recheck your blood sugar after 15 minutes.",
+                "Always carry snacks with you to prevent low blood sugar episodes.",
+                "If symptoms like dizziness, sweating, or confusion persist, seek medical help immediately.",
+                "In emergency situations, doctors may use a Glucagon injection."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "high blood pressure",
+            "patterns": [
+                "high blood pressure",
+                "hypertension",
+                "high BP",
+                "high bp",
+                "elevated blood pressure",
+                "i have high blood pressure",
+                "i have very high blood pressure",
+                "my bp is high",
+                "blood pressure is high",
+                "my blood pressure is high",
+                "BP is elevated",
+                "bp is very high",
+                "my bp is elevated",
+                "bp going up",
+                "pressure is high",
+                "blood pressure high"
+            ],
+            "responses": [
+                "Reduce salt intake, avoid stress, and increase physical activity.",
+                "Medicines like Losartan or Amlodipine are commonly prescribed — use only as directed by your doctor.",
+                "Avoid caffeine, smoking, and alcohol as they can raise blood pressure.",
+                "Losartan (25mg-100mg) is commonly prescribed for high BP. Buy here: https://www.1mg.com/drugs/losar-25-tablet-70685",
+                "Telmisartan (40mg-80mg) is commonly used BP medicine. Buy here: https://www.1mg.com/drugs/telmikind-40-tablet-73134",
+                "Atenolol (25mg-50mg) is a beta-blocker used to control high BP. Buy here: https://www.1mg.com/drugs/atenolol-25mg-tablet-212107"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "low blood pressure",
+            "patterns": [
+                "low blood pressure",
+                "hypotension",
+                "low BP",
+                "low bp",
+                "decreased blood pressure",
+                "i have low blood pressure",
+                "i have very low blood pressure",
+                "my bp is low",
+                "blood pressure is low",
+                "my blood pressure is low",
+                "bp is low",
+                "bp going down",
+                "pressure is low",
+                "blood pressure low",
+                "bp dropped"
+            ],
+            "responses": [
+                "Increase salt intake slightly if advised by your doctor.",
+                "Eat small, frequent meals rather than large ones.",
+                "Amlodipine (5mg-10mg) helps relax blood vessels and lower BP. Buy here: https://www.1mg.com/drugs/amlodac-5-tablet-11540",
+                "Stay hydrated and increase fluid intake - ORS solution can help immediately. Buy here: https://pharmeasy.in/health-care/oral-rehydration-solutions-1298",
+                "Fludrocortisone is prescribed to help raise blood pressure - consult your doctor.",
+                "Midodrine (2.5mg-10mg) is used to treat chronic low blood pressure."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "heart pain",
+            "patterns": [
+                "heart pain",
+                "chest pain",
+                "angina",
+                "heart attack",
+                "i have heart pain",
+                "i have heart attack",
+                "heart discomfort",
+                "pain in chest",
+                "chest discomfort",
+                "tightness in chest",
+                "my chest hurts",
+                "i feel chest pain",
+                "pressure in chest",
+                "chest tightness",
+                "left chest pain"
+            ],
+            "responses": [
+                "Chest pain can be serious — please seek immediate medical attention!",
+                "Call emergency services or go to the nearest hospital right away.",
+                "Rest, stay calm, and avoid any physical exertion until help arrives.",
+                "Do NOT ignore chest pain — it could be a sign of a heart attack or angina."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cold_cough",
+            "patterns": [
+                "cold",
+                "cough",
+                "running nose",
+                "runny nose",
+                "blocked nose",
+                "sore throat",
+                "i have cold",
+                "i have a cold",
+                "i have cough",
+                "i am coughing",
+                "nasal congestion",
+                "stuffy nose",
+                "throat pain",
+                "i have sore throat",
+                "cold and cough",
+                "i have running nose",
+                "sneezing",
+                "i am sneezing",
+                "continuous sneezing",
+                "i have flu"
+            ],
+            "responses": [
+                "For relief, antihistamines like Cetirizine and decongestants like Phenylephrine may help.",
+                "Cetirizine (10mg) helps relieve runny nose and sneezing. Buy here: https://www.1mg.com/drugs/cetirizine-hydrochloride-10mg-tablet-209647",
+                "Phenylephrine nasal drops help relieve blocked/stuffy nose. Buy here: https://www.1mg.com/drugs/nasivion-mini-0-05-nasal-drops-115023",
+                "For dry cough, Dextromethorphan (Alex syrup) provides relief. Buy here: https://www.1mg.com/drugs/alex-syrup-14749",
+                "For productive (wet) cough, Ambroxol helps loosen mucus. Buy here: https://www.1mg.com/drugs/ambrodil-syrup-13261",
+                "Strepsils lozenges soothe a sore or irritated throat. Buy here: https://www.1mg.com/drugs/strepsils-regular-lozenges-76553",
+                "Sinarest tablet combines antihistamine and decongestant for cold relief. Buy here: https://www.1mg.com/drugs/sinarest-tablet-9831",
+                "Steam inhalation with eucalyptus oil helps relieve nasal congestion.",
+                "For sore throat, warm salt water gargles provide good relief.",
+                "Please enter your temperature so I can advise you better!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "vomiting",
+            "patterns": [
+                "vomiting",
+                "nausea",
+                "i have nausea",
+                "i feel vomiting",
+                "vomit",
+                "throwing up",
+                "i feel like vomiting",
+                "i am vomiting",
+                "feeling nauseous",
+                "want to vomit",
+                "puking",
+                "i keep vomiting",
+                "vomited",
+                "i threw up",
+                "upset stomach with vomiting"
+            ],
+            "responses": [
+                "Vomiting may be due to gastritis, food poisoning, or viral gastroenteritis.",
+                "Maintain hydration using ORS solution. Buy here: https://pharmeasy.in/health-care/oral-rehydration-solutions-1298",
+                "Ondansetron (Emeset) is an anti-emetic that helps stop vomiting. Buy here: https://www.1mg.com/drugs/emeset-4-tablet-69128",
+                "Avoid solid food until vomiting settles; start with clear fluids and bland food."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "diarrhea",
+            "patterns": [
+                "loose motion",
+                "i have diarrhea",
+                " i have diarhea",
+                "i have loose motion",
+                "diarrhea",
+                "frequent stools",
+                "watery stools",
+                "loose stools",
+                "i have loose stools",
+                "runny stool",
+                "stomach running",
+                "i keep going to toilet",
+                "frequent bowel movements"
+            ],
+            "responses": [
+                "Diarrhea can cause dehydration — use ORS solution immediately. Buy here: https://pharmeasy.in/health-care/oral-rehydration-solutions-1298",
+                "Probiotics like Lactobacillus help restore gut flora — available as capsules, sachets, or yogurt.",
+                "Eat bland food like rice, bananas, and toast (BRAT diet).",
+                "If bacterial infection is suspected, doctors may prescribe antibiotics like Ciprofloxacin.",
+                "If diarrhea contains blood or lasts more than 2 days, consult a doctor."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "allergy",
+            "patterns": [
+                "allergy",
+                "skin rash",
+                "itching",
+                "hives",
+                "allergic reaction",
+                "i have allergy",
+                "i have rash",
+                "skin itching",
+                "rashes on skin",
+                "i am itching",
+                "allergic",
+                "i have hives",
+                "skin irritation",
+                "red patches on skin",
+                "swollen skin",
+                "skin inflammation"
+            ],
+            "responses": [
+                "I'd like to help with your allergy! Could you tell me where or what type — for example, skin, eyes, nose, food, or dust?",
+                "Allergies can vary a lot depending on the type. Is it a skin allergy, eye allergy, nasal allergy, food allergy, or something else?",
+                "Sure, I can help! Just let me know what kind of allergy — skin rash, sneezing/nasal, eye irritation, or food reaction?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "allergy_skin",
+            "patterns": [
+                "skin",
+                "skin allergy",
+                "skin rash",
+                "rash on skin",
+                "rashes",
+                "itchy skin",
+                "skin itching",
+                "hives",
+                "urticaria",
+                "skin is red",
+                "skin irritation",
+                "bumps on skin",
+                "red patches",
+                "skin is breaking out",
+                "skin reaction",
+                "eczema",
+                "contact dermatitis",
+                "skin burning"
+            ],
+            "responses": [
+                "For skin allergy, here's what you can do:\n\n💊 Cetirizine (10mg) once daily helps reduce itching and hives.\n💊 Prednisolone may be prescribed for severe skin reactions — consult your doctor.\n🧴 Apply Calamine lotion or 1% hydrocortisone cream on the affected area.\n❌ Avoid scratching — it worsens the rash and can cause infection.\n🧼 Use fragrance-free, mild soap and moisturize regularly.\n🩺 If rash spreads rapidly or you have breathing difficulty, seek medical help immediately."
+            ],
+            "context": [
+                "allergy"
+            ]
+        },
+        {
+            "tag": "allergy_eye",
+            "patterns": [
+                "eye",
+                "eyes",
+                "eye allergy",
+                "itchy eyes",
+                "watery eyes",
+                "red eyes",
+                "eye irritation",
+                "allergic conjunctivitis",
+                "eyes are itching",
+                "eyes are watering",
+                "eye discharge",
+                "eyes are red",
+                "burning eyes",
+                "swollen eyes"
+            ],
+            "responses": [
+                "For eye allergies, here's some guidance:\n\n💊 Antihistamine eye drops (like Olopatadine) help relieve itching and redness.\n💊 Cetirizine (10mg) orally can also reduce allergic eye symptoms.\n❌ Avoid rubbing your eyes — it releases more histamine and worsens symptoms.\n🧊 A cold compress over closed eyes gives quick temporary relief.\n🕶️ Wear sunglasses outdoors to protect from pollen and dust.\n🩺 If vision becomes blurry or discharge is thick/yellow, see an ophthalmologist."
+            ],
+            "context": [
+                "allergy"
+            ]
+        },
+        {
+            "tag": "allergy_nasal",
+            "patterns": [
+                "nose",
+                "nasal",
+                "nasal allergy",
+                "sneezing",
+                "runny nose",
+                "blocked nose",
+                "stuffy nose",
+                "nasal congestion",
+                "i keep sneezing",
+                "dust allergy",
+                "pollen allergy",
+                "allergic rhinitis",
+                "nose is running",
+                "nose is blocked",
+                "continuous sneezing",
+                "dust",
+                "pollen",
+                "cold-like symptoms"
+            ],
+            "responses": [
+                "For nasal/dust allergy (allergic rhinitis), here's what helps:\n\n💊 Cetirizine (10mg) once daily relieves sneezing and runny nose effectively.\n💊 Nasal corticosteroid sprays like Fluticasone (Flonase) reduce nasal inflammation.\n💊 Phenylephrine nasal drops help with blocked nose — use only for a few days.\n🏠 Keep windows closed during high pollen seasons.\n🧹 Use a HEPA air purifier and vacuum regularly to reduce dust.\n😷 Wear a mask when cleaning or in dusty areas.\n🩺 For chronic nasal allergy, an ENT specialist can guide allergen-specific treatment."
+            ],
+            "context": [
+                "allergy"
+            ]
+        },
+        {
+            "tag": "allergy_food",
+            "patterns": [
+                "food",
+                "food allergy",
+                "eating",
+                "after eating",
+                "i ate something",
+                "reaction to food",
+                "stomach after food",
+                "seafood allergy",
+                "nut allergy",
+                "milk allergy",
+                "lactose",
+                "gluten",
+                "wheat allergy",
+                "egg allergy",
+                "food reaction",
+                "allergic to food",
+                "i am allergic to food"
+            ],
+            "responses": [
+                "For food allergies, here's important guidance:\n\n💊 Cetirizine (10mg) can help with mild food allergy symptoms like itching or hives.\n💊 For a severe reaction (anaphylaxis), an Epinephrine (Adrenaline) auto-injector is needed — seek emergency help immediately!\n🚫 Identify and strictly avoid the trigger food.\n📋 Always read food labels carefully — allergens are often hidden in processed food.\n⚠️ Symptoms like throat swelling, difficulty breathing after eating are a medical emergency — call 108!\n🩺 An allergist can do a skin prick test or blood test to confirm your specific food allergy."
+            ],
+            "context": [
+                "allergy"
+            ]
+        },
+        {
+            "tag": "allergy_insect",
+            "patterns": [
+                "insect",
+                "bee sting",
+                "wasp",
+                "mosquito",
+                "insect bite",
+                "bite allergy",
+                "allergic to insect",
+                "bug bite",
+                "ant bite",
+                "insect sting",
+                "i was stung",
+                "i was bitten"
+            ],
+            "responses": [
+                "For insect bite/sting allergies:\n\n💊 Cetirizine (10mg) helps reduce itching, swelling, and hives from bites.\n💊 Hydrocortisone cream (1%) applied on the bite reduces local inflammation.\n🧊 Apply a cold pack on the sting/bite area to reduce swelling immediately.\n🚫 Remove the stinger if a bee sting — scrape it out, don't squeeze.\n⚠️ Watch for signs of anaphylaxis: throat swelling, dizziness, difficulty breathing.\n🚨 If severe reaction occurs — call 108 immediately. Epinephrine injection may be needed."
+            ],
+            "context": [
+                "allergy"
+            ]
+        },
+        {
+            "tag": "allergy_drug",
+            "patterns": [
+                "medicine allergy",
+                "drug allergy",
+                "allergic to medicine",
+                "allergic to antibiotics",
+                "penicillin allergy",
+                "reaction to medicine",
+                "medicine reaction",
+                "i am allergic to a drug",
+                "allergic to tablet",
+                "medicine is causing rash",
+                "rash after medicine"
+            ],
+            "responses": [
+                "For medicine/drug allergies:\n\n🛑 Stop taking the suspected medicine immediately and contact your doctor.\n💊 Cetirizine or Diphenhydramine can help with mild reactions like rash and itching.\n💊 Prednisolone may be prescribed for moderate reactions — doctor's guidance needed.\n📋 Always inform your doctors and pharmacists about known drug allergies.\n⚠️ Severe drug reactions (Stevens-Johnson Syndrome) are medical emergencies — seek help at once.\n🩺 An allergist can perform tests to confirm which drug you are allergic to."
+            ],
+            "context": [
+                "allergy"
+            ]
+        },
+        {
+            "tag": "acidity",
+            "patterns": [
+                "acidity",
+                "heartburn",
+                "gas",
+                "burning sensation in chest",
+                "acid reflux",
+                "i have acidity",
+                "i have heartburn",
+                "i have gas",
+                "bloating",
+                "i am bloated",
+                "burping",
+                "belching",
+                "indigestion",
+                "i have indigestion",
+                "stomach burning",
+                "chest burning after eating"
+            ],
+            "responses": [
+                "Acidity is often due to gastric acid reflux or gastritis. Want to know more? Type 'else'.",
+                "Proton Pump Inhibitors like Omeprazole or Pantoprazole reduce acid production effectively. Buy here: https://blinkit.com/prn/omecip-20mg-strip-of-15-capsules/prid/640574?srsltid=AfmBOoqoWaio6yCYZn0Ukq_7qFfH_w0OwJH_szfQhLWAXQ1sprBh1Mb8",
+                "Antacids containing Calcium carbonate provide rapid relief.",
+                "Avoid spicy, oily, and acidic foods. Eat smaller, more frequent meals. Want to know more? Type 'else'.",
+                "Don't lie down immediately after eating — wait at least 30 minutes."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "back_pain",
+            "patterns": [
+                "back pain",
+                "lower back pain",
+                "spine pain",
+                "i have back pain",
+                "my back hurts",
+                "back is paining",
+                "upper back pain",
+                "pain in my back",
+                "backache",
+                "back ache",
+                "lumbar pain",
+                "i have backache",
+                "my lower back hurts"
+            ],
+            "responses": [
+                "Back pain may be muscular, postural, or due to lumbar strain.",
+                "Rest and apply a warm compress to the affected area for relief.",
+                "Paracetamol or NSAIDs like Ibuprofen can help reduce pain. Buy here: https://blinkit.com/prn/dolo-650mg-strip-of-15-tablets/prid/639498",
+                "NSAIDs like Ibuprofen is preferable. Buy here: https://blinkit.com/prn/brufen-400mg-strip-of-20-tablets/prid/643637",
+                "Muscle relaxants like Thiocolchicoside are sometimes prescribed by doctors.",
+                "Avoid heavy lifting and practice good posture. Gentle stretching can help."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "sleep_problem",
+            "patterns": [
+                "insomnia",
+                "not able to sleep",
+                "sleep problem",
+                "difficulty sleeping",
+                "i cant sleep",
+                "i cannot sleep",
+                "i have insomnia",
+                "trouble sleeping",
+                "sleep issues",
+                "i dont sleep well",
+                "disturbed sleep",
+                "waking up at night",
+                "unable to sleep",
+                "i have sleeplessness"
+            ],
+            "responses": [
+                "Insomnia may be related to stress, anxiety, or poor sleep hygiene.",
+                "Try maintaining a consistent sleep schedule and avoid screens before bed.",
+                "Melatonin supplements may help regulate your sleep cycle.",
+                "Avoid caffeine and heavy meals close to bedtime.",
+                "In chronic cases, doctors may prescribe medications like Zolpidem. Buy here: https://amzn.in/d/03w4W302"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "stress_anxiety",
+            "patterns": [
+                "stress",
+                "i am feeling stressed",
+                "i am stressed",
+                "anxiety",
+                "i have stress",
+                "panic attack",
+                "feeling nervous",
+                "i feel anxious",
+                "i have anxiety",
+                "i am anxious",
+                "overthinking",
+                "i am overthinking",
+                "mental stress",
+                "feeling overwhelmed",
+                "i feel panicked",
+                "panic",
+                "nervousness",
+                "i feel nervous",
+                "mental health"
+            ],
+            "responses": [
+                "I hear you, and it's okay to not be okay sometimes. 💙 You're not alone in this. How can I help you? ",
+                "Deep breathing can really help in the moment — try breathing in for 4 seconds, hold for 4, and out for 4. Relax, you are not alone.",
+                "Talking to someone you trust — a friend, family member, or counselor — can make a huge difference.",
+                "If these feelings are persistent or overwhelming, please reach out to a mental health professional. You deserve support.🌿"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "thyroid_issue",
+            "patterns": [
+                "thyroid",
+                "i have thyroid",
+                "hypothyroid",
+                "hyperthyroid",
+                "thyroid problem",
+                "thyroid issue",
+                "underactive thyroid",
+                "overactive thyroid",
+                "my thyroid is high",
+                "my thyroid is low",
+                "thyroid levels",
+                "thyroid symptoms"
+            ],
+            "responses": [
+                "Thyroid disorders affect metabolism, energy levels, and overall health.",
+                "Diagnosis involves TSH, T3, and T4 blood tests — consult your doctor.",
+                "Hypothyroidism (low thyroid) is treated with Levothyroxine.",
+                "Hyperthyroidism (high thyroid) may be treated with Methimazole or Propylthiouracil.",
+                "Regular monitoring of thyroid levels is important — visit your doctor periodically."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "anemia",
+            "patterns": [
+                "anemia",
+                "i have anemia",
+                "low hemoglobin",
+                "weakness",
+                "fatigue with pale skin",
+                "i feel weak",
+                "i am always tired",
+                "i have low hemoglobin",
+                "iron deficiency",
+                "i feel fatigued",
+                "pale skin",
+                "i look pale",
+                "i have fatigue",
+                "tiredness"
+            ],
+            "responses": [
+                "Anemia is commonly due to iron deficiency or Vitamin B12 deficiency.",
+                "Iron-rich foods like spinach, lentils, and red meat can help.",
+                "Iron supplements such as Ferrous Sulfate may be prescribed by your doctor.",
+                "Vitamin B12 deficiency is treated with Cyanocobalamin supplementation.",
+                "Get a CBC blood test done to confirm and understand the type of anemia."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "joint pain",
+            "patterns": [
+                "joint pain",
+                "i have joint pain",
+                "arthritis",
+                "joint discomfort",
+                "knee pain",
+                "i have knee pain",
+                "my knee hurts",
+                "elbow pain",
+                "wrist pain",
+                "shoulder pain",
+                "hip pain",
+                "joint swelling",
+                "pain in joints",
+                "stiff joints",
+                "joint stiffness",
+                "i have arthritis"
+            ],
+            "responses": [
+                "Rest the affected joint and apply ice to reduce swelling.",
+                "NSAIDs like Ibuprofen or Diclofenac can help reduce joint pain and inflammation. Buy here: https://blinkit.com/prn/brufen-400mg-strip-of-20-tablets/prid/643637",
+                "Consider gentle stretching exercises to improve joint mobility.",
+                "For arthritis, consult a doctor — DMARDs or corticosteroids may be prescribed.",
+                "If swelling and pain are severe or persistent, seek medical evaluation."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "dizziness",
+            "patterns": [
+                "dizziness",
+                "i have dizziness",
+                "dizzy",
+                "lighthead",
+                "lightheadedness",
+                "lightheaded",
+                "feeling faint",
+                "vertigo",
+                "faint",
+                "i feel dizzy",
+                "i am having dizziness",
+                "i feel lightheaded",
+                "room is spinning",
+                "i feel like fainting",
+                "i have vertigo",
+                "spinning sensation",
+                "balance problem",
+                "i lost balance"
+            ],
+            "responses": [
+                "Sit or lie down immediately until the feeling passes — avoid sudden movements.",
+                "Common causes include dehydration, low blood pressure, anemia, or vertigo (BPPV).",
+                "Stay hydrated and have a light snack if you haven't eaten recently.",
+                "If dizziness is due to vertigo, Meclizine after meals may help.",
+                "If dizziness is frequent or accompanied by vomiting or hearing loss, consult a doctor."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "pneumonia",
+            "patterns": [
+                "pneumonia",
+                "i have pneumonia",
+                "lung infection",
+                "difficulty breathing",
+                "chest congestion",
+                "is it pneumonia",
+                "shortness of breath with fever",
+                "i have lung infection",
+                "breathing difficulty",
+                "lung inflammation",
+                "i have chest congestion",
+                "productive cough with fever"
+            ],
+            "responses": [
+                "Pneumonia is a serious lung infection — please seek medical care immediately.",
+                "Symptoms include productive cough, difficulty breathing, chest pain, and high fever.",
+                "Treatment involves antibiotics like Amoxicillin, Azithromycin, or Levofloxacin.",
+                "Rest, stay hydrated, and monitor your oxygen levels if possible.",
+                "Severe cases may require hospitalization — do not delay medical attention."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "brain tumor",
+            "patterns": [
+                "tumor",
+                "i have brain tumor",
+                "brain tumor",
+                "head tumor",
+                "brain growth",
+                "persistent headache",
+                "neurological issues",
+                "is it brain tumor",
+                "frequent unexplained headaches",
+                "i think i have brain tumor",
+                "brain mass",
+                "intracranial tumor"
+            ],
+            "responses": [
+                "A brain tumor can cause persistent headaches, nausea, seizures, or neurological issues.",
+                "Diagnosis typically involves an MRI with contrast — consult a neurologist.",
+                "Management depends on tumor type and may include surgery, radiotherapy, or chemotherapy.",
+                "If you experience severe persistent headaches, vision changes, or seizures — seek medical help immediately.",
+                "Please don't self-diagnose — consult a qualified medical professional for proper evaluation."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "eye_problem",
+            "patterns": [
+                "eye pain",
+                "red eyes",
+                "itchy eyes",
+                "eye irritation",
+                "blurry vision",
+                "i have eye pain",
+                "my eyes are red",
+                "watery eyes",
+                "eye infection",
+                "conjunctivitis",
+                "pink eye",
+                "my eyes are itching",
+                "eye discharge",
+                "vision is blurry"
+            ],
+            "responses": [
+                "Eye irritation or redness can be due to infection, allergy, or dryness.",
+                "Avoid rubbing your eyes — wash hands frequently.",
+                "Antihistamine eye drops can help with allergic eye symptoms.",
+                "For bacterial eye infections, antibiotic eye drops like Ciprofloxacin may be prescribed.",
+                "If vision becomes blurry or pain is severe, consult an ophthalmologist immediately."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "skin_problem",
+            "patterns": [
+                "acne",
+                "pimples",
+                "skin problem",
+                "dry skin",
+                "oily skin",
+                "i have acne",
+                "i have pimples",
+                "skin rashes",
+                "eczema",
+                "psoriasis",
+                "skin burning",
+                "skin peeling",
+                "dark spots",
+                "i have eczema",
+                "skin infection",
+                "fungal infection on skin"
+            ],
+            "responses": [
+                "Skin problems can range from acne to infections — identifying the cause helps with treatment.",
+                "For acne, benzoyl peroxide or salicylic acid-based creams can help.",
+                "Keep skin clean and moisturized. Avoid touching your face frequently.",
+                "For fungal infections, antifungal creams like Clotrimazole may be used.",
+                "If skin problem is persistent or worsening, consult a dermatologist."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "dental_problem",
+            "patterns": [
+                "tooth pain",
+                "toothache",
+                "dental pain",
+                "gum pain",
+                "i have toothache",
+                "my tooth hurts",
+                "tooth is paining",
+                "cavity",
+                "i have cavity",
+                "gum bleeding",
+                "my gums are bleeding",
+                "mouth pain",
+                "jaw pain",
+                "wisdom tooth pain"
+            ],
+            "responses": [
+                "Toothache is often caused by cavities, gum infection, or wisdom tooth eruption.",
+                "Rinse with warm salt water to reduce inflammation and pain temporarily.",
+                "Clove oil applied to the affected area can provide temporary pain relief.",
+                "Ibuprofen or Paracetamol can help manage dental pain. Buy here: https://blinkit.com/prn/brufen-400mg-strip-of-20-tablets/prid/643637",
+                "Please visit a dentist as soon as possible — dental issues worsen if left untreated."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "urinary_problem",
+            "patterns": [
+                "uti",
+                "urinary tract infection",
+                "burning urination",
+                "painful urination",
+                "i have uti",
+                "i have urinary infection",
+                "frequent urination",
+                "i urinate frequently",
+                "blood in urine",
+                "cloudy urine",
+                "pain while urinating",
+                "i have burning sensation while urinating"
+            ],
+            "responses": [
+                "UTI symptoms include burning urination, frequent urge to urinate, and cloudy urine.",
+                "Drink plenty of water to flush out bacteria.",
+                "Antibiotics like Ciprofloxacin or Nitrofurantoin are commonly prescribed for UTIs.",
+                "Avoid holding urine for long periods — urinate frequently.",
+                "If you notice blood in urine or have fever with UTI symptoms, consult a doctor immediately."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "okay",
+            "patterns": [
+                "okay",
+                "Okay",
+                "OK",
+                "Ok",
+                "ok",
+                "k",
+                "tnx",
+                "fine",
+                "finee",
+                "alright",
+                "got it",
+                "understood",
+                "i see",
+                "noted",
+                "sure",
+                "cool",
+                "great",
+                "perfect",
+                "good",
+                "nice"
+            ],
+            "responses": [
+                "Got it! Let me know if there's anything else I can help with. 😊",
+                "Alright! Feel free to ask if you have more questions.",
+                "Sure thing! Stay healthy and take care.",
+                "Glad! Is there anything else you'd like to know?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "not_feeling_well",
+            "patterns": [
+                "i don't feel well",
+                "i am not feeling well",
+                "i feel sick",
+                "i feel unwell",
+                "not feeling good",
+                "i feel bad",
+                "something is wrong",
+                "i feel off",
+                "not well",
+                "i feel terrible",
+                "i feel awful",
+                "i feel horrible",
+                "my body doesn't feel right",
+                "i feel under the weather"
+            ],
+            "responses": [
+                "I'm sorry to hear that 😔 Can you tell me more about what you're feeling? For example, do you have a fever, pain, or nausea?",
+                "Oh no! Let me help you figure this out. What symptoms are you experiencing right now?",
+                "I hope you feel better soon! Could you describe your symptoms a bit more so I can guide you properly?"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "emergency",
+            "patterns": [
+                "emergency",
+                "help me",
+                "urgent",
+                "call ambulance",
+                "i am dying",
+                "very serious",
+                "critical condition",
+                "unconscious",
+                "not breathing",
+                "stroke",
+                "i think i am having a stroke",
+                "someone collapsed",
+                "severe bleeding",
+                "i cant breathe",
+                "i cannot breathe"
+            ],
+            "responses": [
+                "🚨 This sounds like a medical emergency! Call 108 (ambulance) or 112 (emergency) immediately!",
+                "Please call emergency services right away — dial 108 in India. Do NOT wait!",
+                "Get to the nearest emergency room or call 108 immediately. Every second counts!"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "diet_nutrition",
+            "patterns": [
+                "what should i eat",
+                "healthy food",
+                "diet advice",
+                "nutrition tips",
+                "what foods are healthy",
+                "good diet",
+                "healthy eating",
+                "what to eat for good health",
+                "diet plan",
+                "foods to avoid",
+                "healthy diet",
+                "balanced diet",
+                "what should i eat to stay healthy",
+                "nutrition"
+            ],
+            "responses": [
+                "Great question! 🥗 Nutrition is the foundation of good health. Here's a quick overview:\n\n🍚 Carbohydrates: 45–65% of daily calories (~225–325g for a 2000 kcal diet). Choose whole grains, oats, and brown rice over refined carbs.\n🥩 Protein: 10–35% of daily calories (~50–175g). Include eggs, legumes, lean meat, tofu, and dairy.\n🥑 Fats: 20–35% of daily calories. Focus on healthy fats — nuts, seeds, olive oil, avocado. Limit saturated fats.\n🌾 Fibre: At least 25–38g per day. Found in vegetables, fruits, oats, and legumes.\n💧 Water: 8–10 glasses (2–2.5 litres) per day minimum.\n\nWould you like to know more about any specific nutrient? (e.g. carbs, protein, fats, fibre, vitamins)"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "exercise_fitness",
+            "patterns": [
+                "can i exercise",
+                "should i workout",
+                "exercise advice",
+                "fitness tips",
+                "how much exercise",
+                "is it safe to exercise",
+                "physical activity",
+                "can i go to gym",
+                "workout",
+                "i want to stay fit",
+                "how to stay healthy",
+                "daily exercise"
+            ],
+            "responses": [
+                "Regular physical activity is one of the best things you can do for your health!",
+                "Aim for at least 30 minutes of moderate activity (like brisk walking) most days of the week.",
+                "If you're unwell or recovering from illness, rest is more important than exercise — don't push it.",
+                "Always warm up before and cool down after a workout to avoid injury.",
+                "Consult a doctor before starting intense exercise if you have heart issues, diabetes, or joint problems."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "covid_flu",
+            "patterns": [
+                "covid",
+                "covid 19",
+                "coronavirus",
+                "i have covid",
+                "flu",
+                "influenza",
+                "i have flu",
+                "flu symptoms",
+                "covid symptoms",
+                "i tested positive",
+                "positive for covid",
+                "i have body ache and fever",
+                "body pain with fever and cold"
+            ],
+            "responses": [
+                "COVID-19 and flu can cause fever, body aches, cough, fatigue, and breathing difficulty.",
+                "Rest, stay hydrated, and isolate yourself to avoid spreading it to others.",
+                "Monitor your oxygen levels with a pulse oximeter — below 94% means seek medical help.",
+                "For fever, Paracetamol can help. For body pain, rest and Ibuprofen (if no contraindications).",
+                "If you experience severe breathlessness, chest pain, or confusion — go to a hospital immediately.",
+                "Please follow local health authority guidelines and get vaccinated if you haven't already."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "pregnancy",
+            "patterns": [
+                "pregnancy",
+                "i am pregnant",
+                "i think i am pregnant",
+                "pregnant",
+                "pregnancy symptoms",
+                "morning sickness",
+                "i have morning sickness",
+                "nausea in pregnancy",
+                "pregnancy advice",
+                "prenatal care",
+                "antenatal"
+            ],
+            "responses": [
+                "Congratulations if you are pregnant! 🤰 Prenatal care is very important — please register with an OB-GYN.",
+                "Take folic acid supplements during the first trimester to support baby's development.",
+                "Morning sickness (nausea) is common in early pregnancy — small frequent meals and ginger tea can help.",
+                "Avoid self-medicating during pregnancy — always consult your doctor before taking any medicine.",
+                "Stay hydrated, eat nutritiously, and attend all your prenatal check-ups."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "drug_interaction",
+            "patterns": [
+                "can i take two medicines together",
+                "drug interaction",
+                "can i take paracetamol with ibuprofen",
+                "can i mix medicines",
+                "is it safe to take two tablets",
+                "medicine interaction",
+                "can i combine medicines",
+                "are these medicines safe together",
+                "drug combination"
+            ],
+            "responses": [
+                "Drug interactions can be important — it's always best to consult your doctor or pharmacist before combining medicines.",
+                "As a general rule, avoid taking multiple pain relievers (like Paracetamol and Ibuprofen) at the same time unless advised.",
+                "Some combinations can reduce effectiveness or increase side effects — always read the label or ask a pharmacist.",
+                "I can provide general information, but for specific combinations, please consult a healthcare professional."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "nutrition_carbs",
+            "patterns": [
+                "carbs",
+                "carbohydrates",
+                "carb intake",
+                "how many carbs",
+                "daily carbs",
+                "carbohydrate",
+                "carbs per day",
+                "how much carbs should i eat",
+                "good carbs",
+                "bad carbs"
+            ],
+            "responses": [
+                "🍚 Carbohydrates — Your Body's Main Energy Source:\n\n📊 Recommended Intake: 225–325g per day (based on 2000 kcal diet)\n✅ Good Sources: Brown rice, oats, whole wheat bread, sweet potato, quinoa, fruits, legumes\n❌ Limit: White bread, sugary drinks, pastries, white rice (refined carbs spike blood sugar)\n💡 Tip: Choose complex carbs over simple ones — they digest slowly and keep you full longer.\n\nWould you like to know about protein, fats, fibre, or vitamins next?"
+            ],
+            "context": [
+                "diet_nutrition"
+            ]
+        },
+        {
+            "tag": "nutrition_protein",
+            "patterns": [
+                "protein",
+                "protein intake",
+                "how much protein",
+                "daily protein",
+                "protein per day",
+                "protein sources",
+                "high protein foods",
+                "how many grams of protein",
+                "protein rich food",
+                "protein diet"
+            ],
+            "responses": [
+                "🥩 Protein — The Building Block of Your Body:\n\n📊 Recommended Intake: 0.8g per kg of body weight per day (e.g. 56g for 70kg person)\n   For active individuals or muscle building: 1.2–2.0g per kg\n✅ Good Sources: Eggs, chicken, fish, tofu, lentils, chickpeas, milk, paneer, Greek yoghurt\n❌ Avoid: Processed meats, deep-fried protein sources regularly\n💡 Tip: Spread protein across meals rather than eating it all at once — your body absorbs it better.\n\nWould you like to know about carbs, fats, fibre, or vitamins next?"
+            ],
+            "context": [
+                "diet_nutrition"
+            ]
+        },
+        {
+            "tag": "nutrition_fats",
+            "patterns": [
+                "fats",
+                "fat intake",
+                "healthy fats",
+                "how much fat",
+                "daily fat",
+                "fat per day",
+                "good fats",
+                "bad fats",
+                "saturated fat",
+                "unsaturated fat",
+                "dietary fat",
+                "fat in food"
+            ],
+            "responses": [
+                "🥑 Fats — Essential but Choose Wisely:\n\n📊 Recommended Intake: 44–78g per day (20–35% of a 2000 kcal diet)\n✅ Healthy Fats (increase these): Avocado, olive oil, nuts (almonds, walnuts), seeds, fatty fish (salmon, tuna)\n⚠️ Limit Saturated Fats (<10% of calories): Butter, red meat, full-fat dairy, coconut oil\n❌ Avoid Trans Fats completely: Fried fast food, margarine, packaged snacks\n💡 Tip: Cooking with olive oil instead of butter makes a big difference over time.\n\nWould you like to know about carbs, protein, fibre, or vitamins next?"
+            ],
+            "context": [
+                "diet_nutrition"
+            ]
+        },
+        {
+            "tag": "nutrition_fibre",
+            "patterns": [
+                "fibre",
+                "fiber",
+                "dietary fibre",
+                "how much fibre",
+                "fibre intake",
+                "daily fibre",
+                "fibre rich foods",
+                "high fibre foods",
+                "fibre per day",
+                "roughage",
+                "fibre in diet",
+                "how much fiber should i eat"
+            ],
+            "responses": [
+                "🌾Dietary Fibre — Key to Gut Health:\n\n📊 Recommended Intake: 25g/day for women, 38g/day for men\n✅ Best Sources:\n   • Soluble fibre (lowers cholesterol): Oats, apples, beans, lentils, flaxseeds\n   • Insoluble fibre (aids digestion): Whole wheat, bran, vegetables, nuts\n🏥 Benefits: Improves digestion, reduces constipation, lowers blood sugar, reduces heart disease risk\n❌ Most people only get ~15g/day — try to gradually increase to avoid bloating\n💡 Tip: Swap white rice for brown rice and add a handful of vegetables to every meal.\n\nWould you like to know about carbs, protein, fats, or vitamins next?"
+            ],
+            "context": [
+                "diet_nutrition"
+            ]
+        },
+        {
+            "tag": "nutrition_vitamins",
+            "patterns": [
+                "vitamins",
+                "vitamin intake",
+                "which vitamins",
+                "vitamin deficiency",
+                "daily vitamins",
+                "vitamin d",
+                "vitamin c",
+                "vitamin b12",
+                "vitamin a",
+                "minerals",
+                "micronutrients",
+                "supplements",
+                "what vitamins do i need",
+                "important vitamins"
+            ],
+            "responses": [
+                "💊 Key Vitamins & Minerals Your Body Needs Daily:\n\n🌟 Vitamin D: 600–800 IU/day — sunlight, fatty fish, fortified milk. Deficiency causes weak bones.\n🍊 Vitamin C: 65–90mg/day — citrus fruits, bell peppers, broccoli. Boosts immunity & skin.\n🥩 Vitamin B12: 2.4mcg/day — meat, eggs, dairy (vegans must supplement!). Needed for nerve health.\n🥕 Vitamin A: 700–900mcg/day — carrots, sweet potato, leafy greens. Important for vision.\n🦴 Calcium: 1000mg/day — dairy, tofu, almonds. Critical for bones and teeth.\n🩸 Iron: 8–18mg/day — red meat, spinach, lentils. Prevents anaemia.\n☀️ Magnesium: 310–420mg/day — nuts, seeds, dark chocolate. Supports muscle and nerve function.\n\n💡 A varied, colourful diet usually covers most vitamins naturally!\n\nWould you like to know about carbs, protein, fats, or fibre next?"
+            ],
+            "context": [
+                "diet_nutrition"
+            ]
+        },
+        {
+            "tag": "nutrition_water",
+            "patterns": [
+                "water",
+                "hydration",
+                "how much water",
+                "daily water intake",
+                "water per day",
+                "how many glasses of water",
+                "dehydration",
+                "water intake",
+                "should i drink more water",
+                "importance of water"
+            ],
+            "responses": [
+                "💧 Hydration — Often the Most Overlooked Nutrient:\n\n📊 Recommended Intake: 2–2.5 litres (8–10 glasses) per day for most adults\n   Athletes or people in hot climates may need 3–4 litres\n✅ Signs of Good Hydration: Light yellow urine, no headaches, good energy\n⚠️ Signs of Dehydration: Dark urine, fatigue, headaches, dry mouth, dizziness\n🥤 Not just water counts: Herbal teas, coconut water, fruits (watermelon, cucumber) also hydrate\n❌ Avoid: Excessive coffee, alcohol, and sugary drinks — they dehydrate you\n💡 Tip: Drink a glass of water first thing in the morning before anything else!\n\nWould you like to know about carbs, protein, fats, fibre, or vitamins next?"
+            ],
+            "context": [
+                "diet_nutrition"
+            ]
+        },
+        {
+            "tag": "fallback",
+            "patterns": [
+                "i don't know",
+                "random text",
+                "what",
+                "huh",
+                "hmm",
+                "nothing",
+                "just checking",
+                "testing",
+                "test",
+                "i have a question",
+                "can you help",
+                "i need help"
+            ],
+            "responses": [
+                "I'm here to help! Try asking me about symptoms like 'I have a headache' or medicines like 'what is Paracetamol'.",
+                "Not sure I understood — could you describe your symptoms or what you need help with?",
+                "Feel free to ask me about symptoms, medicines, health tips, or your personal health data!",
+                "I'm your health assistant — ask me anything about symptoms, treatments, or medicines 😊"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "constipation",
+            "patterns": [
+                "constipation",
+                "i have constipation",
+                "cannot pass stool",
+                "hard stool",
+                "difficulty in passing stool",
+                "not passing stool",
+                "no bowel movement",
+                "straining to poop",
+                "stool is hard",
+                "i haven't pooped",
+                "bowel not moving",
+                "infrequent stools",
+                "stomach feels full",
+                "bloating with no motion"
+            ],
+            "responses": [
+                "Constipation is very common and usually easy to treat. Here's what helps:\n\n💧 Drink plenty of water — at least 8–10 glasses a day. This is the #1 fix.\n🌾 Increase fibre: eat oats, fruits (papaya, prunes, apples), vegetables, and whole grains.\n🚶 Light exercise like walking stimulates bowel movement.\n💊 Isabgol (Psyllium husk) with water before bed is a gentle, natural laxative.\n💊 Lactulose syrup or Bisacodyl tablets can be used short-term if needed.\n☕ Warm water or black coffee in the morning helps stimulate digestion.\n🩺 If constipation lasts more than 2 weeks or is accompanied by blood in stool — see a doctor."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "period_pain",
+            "patterns": [
+                "period pain",
+                "menstrual cramps",
+                "menstrual pain",
+                "periods",
+                "my periods are painful",
+                "dysmenorrhea",
+                "cramps during period",
+                "stomach pain during periods",
+                "period cramps",
+                "time of month",
+                "heavy periods",
+                "irregular periods",
+                "late period",
+                "missed period",
+                "pms",
+                "premenstrual",
+                "menstruation pain"
+            ],
+            "responses": [
+                "Period pain (dysmenorrhea) is very common. Here's how to manage it:\n\n💊 Ibuprofen (400mg) is the most effective for menstrual cramps — take it with food.\n💊 Mefenamic acid (Meftal Spas) specifically targets period cramps — consult a doctor for dosage.\n🌡️ Apply a heating pad or warm water bottle on the lower abdomen — this really helps!\n🧘 Light yoga or stretching (child's pose, cat-cow) can ease cramps.\n💧 Stay hydrated and reduce salt, caffeine, and sugar during your period.\n🩺 If periods are extremely heavy, very irregular, or pain is severe — consult a gynaecologist.\n💡 Irregular periods can sometimes indicate PCOS or thyroid issues — worth checking."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "cholesterol",
+            "patterns": [
+                "cholesterol",
+                "high cholesterol",
+                "i have high cholesterol",
+                "cholesterol is high",
+                "ldl is high",
+                "bad cholesterol",
+                "hdl is low",
+                "lipid profile",
+                "triglycerides",
+                "high triglycerides",
+                "cholesterol level",
+                "my cholesterol is high"
+            ],
+            "responses": [
+                "High cholesterol increases risk of heart disease and stroke — but it's very manageable. Here's how:\n\n🥗 Diet changes first: reduce saturated fats (butter, red meat, fried food), increase fibre (oats, legumes), eat more omega-3 (fish, flaxseeds, walnuts).\n🏃 Exercise: 30 minutes of moderate activity 5 days a week raises good cholesterol (HDL).\n🚭 Quit smoking — it lowers good cholesterol significantly.\n💊 Atorvastatin or Rosuvastatin are commonly prescribed statins — take only as directed by your doctor.\n🧪 Get a full lipid profile test done to know your LDL, HDL, and triglyceride levels.\n🩺 High cholesterol has no symptoms — regular blood tests are the only way to track it."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "liver_problem",
+            "patterns": [
+                "liver problem",
+                "liver pain",
+                "fatty liver",
+                "i have liver problem",
+                "liver disease",
+                "jaundice",
+                "yellow eyes",
+                "yellow skin",
+                "my skin is yellow",
+                "hepatitis",
+                "liver failure",
+                "elevated liver enzymes",
+                "sgpt is high",
+                "sgot is high",
+                "liver is swollen",
+                "liver cirrhosis"
+            ],
+            "responses": [
+                "Liver problems range from mild to serious. Here's what to know:\n\n⚠️ Jaundice (yellow skin/eyes), dark urine, and pale stools are warning signs — see a doctor immediately.\n🧪 Blood tests (LFT — Liver Function Test) can assess liver health.\n🚫 Avoid alcohol completely — it directly damages liver cells.\n💊 Avoid self-medicating with painkillers like Paracetamol in excess — they are processed by the liver.\n🥗 Eat a liver-friendly diet: leafy greens, garlic, turmeric, green tea, and avoid fatty/processed food.\n💧 Stay hydrated and maintain a healthy weight — fatty liver is closely linked to obesity.\n🩺 Hepatitis A, B, and C are common liver infections — vaccines are available for Hep A and B."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "kidney_problem",
+            "patterns": [
+                "kidney problem",
+                "kidney pain",
+                "kidney stone",
+                "kidney disease",
+                "i have kidney stone",
+                "back pain near kidney",
+                "kidney infection",
+                "renal problem",
+                "kidney failure",
+                "creatinine is high",
+                "my kidney hurts",
+                "pain in lower back with urination",
+                "kidney stones"
+            ],
+            "responses": [
+                "Kidney problems need attention early. Here's important guidance:\n\n💧 Drink at least 2.5–3 litres of water daily — this is the best way to prevent kidney stones.\n⚠️ Severe flank/back pain with blood in urine can indicate kidney stones — seek medical care.\n💊 For kidney stone pain, doctors usually prescribe Tamsulosin to help pass the stone + painkillers.\n🧪 Creatinine and urea blood tests assess kidney function — get tested if you're at risk.\n🥗 Limit salt, oxalate-rich foods (spinach, nuts), and animal protein if prone to stones.\n🚫 Avoid excess NSAIDs (Ibuprofen) — overuse damages kidneys over time.\n🩺 Chronic kidney disease (CKD) is silent — regular check-ups are important if you have diabetes or hypertension."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "depression",
+            "patterns": [
+                "i am sad",
+                "i feel sad",
+                "i am very sad",
+                "i am depressed",
+                "i feel depressed",
+                "depression",
+                "i am in depression",
+                "i feel hopeless",
+                "i feel worthless",
+                "i have no motivation",
+                "life feels pointless",
+                "i feel empty inside",
+                "i am always sad",
+                "nothing makes me happy",
+                "i feel numb",
+                "i want to cry",
+                "i have been feeling low",
+                "i feel low",
+                "i am not okay",
+                "i am very very sad",
+                "but i am sad",
+                "i feel down",
+                "i am emotionally drained",
+                "i feel like giving up"
+            ],
+            "responses": [
+                "I hear you, and I want you to know — what you're feeling is valid. You're not alone. 💙\n\nDepression is a real medical condition, not a weakness. Here's some guidance:\n\n🤝 Please talk to someone you trust — a friend, family member, or counselor. Sharing helps.\n😴 Try to maintain a regular sleep schedule — poor sleep worsens depression significantly.\n🥗 Eat regularly and stay hydrated — skipping meals affects mood more than people realise.\n💊 If symptoms persist for more than 2 weeks, please consult a psychiatrist — antidepressants like SSRIs (Sertraline, Escitalopram) are safe and effective when prescribed.\n📞 If you ever feel like harming yourself — please call iCall: 9152987821 (India) immediately.\n\n💡 Recovery is possible. Many people get through this with the right support. 🌱",
+                "I hear you, and it's okay to not be okay sometimes. 💙 You're not alone in this. How can I help you? ",
+                "Talking to someone you trust — a friend, family member, or counselor — can make a huge difference.",
+                "If these feelings are persistent or overwhelming, please reach out to a mental health professional. You deserve support.🌿"
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "dehydration",
+            "patterns": [
+                "dehydration",
+                "i am dehydrated",
+                "not drinking enough water",
+                "dry mouth",
+                "feeling thirsty all the time",
+                "dark urine",
+                "i feel dehydrated",
+                "dry skin",
+                "lack of water",
+                "i haven't drunk water",
+                "very thirsty",
+                "parched"
+            ],
+            "responses": [
+                "Dehydration can cause headaches, fatigue, dizziness, and dark urine. Here's what to do:\n\n💧 Drink water immediately — small sips frequently if nauseous.\n🥤 ORS (Oral Rehydration Solution) is the best for quick rehydration — especially after vomiting or diarrhea.\n🍉 Hydrating foods: watermelon, cucumber, oranges, coconut water.\n☕ Avoid caffeine and alcohol — they increase fluid loss.\n📊 Normal daily intake: 2–2.5 litres for adults, more in hot weather or after exercise.\n⚠️ Severe dehydration signs: extreme dizziness, confusion, no urination for 8+ hours — seek medical help."
+            ],
+            "context": [
+                ""
+            ]
+        },
+        {
+            "tag": "wound_injury",
+            "patterns": [
+                "wound",
+                "cut",
+                "i got a cut",
+                "bleeding",
+                "i am bleeding",
+                "injury",
+                "i got injured",
+                "scrape",
+                "bruise",
+                "i bruised myself",
+                "sprain",
+                "i sprained my ankle",
+                "fracture",
+                "i think i broke a bone",
+                "i fell down",
+                "wound is not healing",
+                "deep cut",
+                "open wound"
+            ],
+            "responses": [
+                "Here's first aid guidance based on your injury:\n\n🩹 For cuts/wounds:\n   • Apply pressure with a clean cloth to stop bleeding.\n   • Clean with clean water or saline — avoid cotton wool directly.\n   • Apply antiseptic (Betadine/Povidone-iodine) and cover with a bandage.\n   • Tetanus injection may be needed for deep/dirty wounds — see a doctor.\n\n🧊 For bruises/sprains:\n   • Apply RICE method: Rest, Ice (20 min), Compression, Elevation.\n   • Ibuprofen (400mg) helps with pain and swelling.\n\n🦴 For suspected fractures:\n   • Immobilise the area — do not try to straighten it.\n   • Go to emergency immediately for an X-ray.\n\n⚠️ Seek medical help if: bleeding doesn't stop after 10 minutes, wound is deep/gaping, or signs of infection appear (redness, pus, fever)."
+            ],
+            "context": [
+                ""
+            ]
+        }
+    ]
+}
